@@ -3,189 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Ledger | Anatomia Archive</title>
-    
-    <script src="../archive-lock.js"></script>
-
+    <title>The Anatomia Archive | Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0d0d0c;
+            --bg-color: #0d0d0c;
             --parchment: #e2d1a4;
-            --accent-red: #ff3333; 
-            --gold-muted: #3a321d;
-            --text-gray: #7a7a7a;
+            --accent-red: #b32d2d;
+            --text-main: #e0dbcd;
+            --border-style: 1px solid #4a422d;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--parchment);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'IM Fell English', serif;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            padding: 30px 15px;
+            padding: 0;
+            line-height: 1.4;
         }
 
-        .museum-wrap {
-            max-width: 420px; /* Tighter width for that "dense" feel */
-            width: 100%;
+        header {
+            padding: 20px 10px;
+            border-bottom: var(--border-style);
+            background: linear-gradient(to bottom, #1a1a17, #0d0d0c);
             text-align: center;
         }
 
-        .emblem {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 10px;
-            background: url('../Logopit_1776777067963.png') no-repeat center;
-            background-size: contain;
+        .brand-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: auto;
+            filter: drop-shadow(0 0 5px rgba(179, 45, 45, 0.4));
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 1.4rem;
-            margin: 10px 0 2px;
+            font-size: 1.3rem;
+            margin: 0;
             color: var(--parchment);
-        }
-
-        .tagline {
-            font-style: italic;
-            color: var(--gold-muted);
-            font-size: 0.7rem;
-            margin-bottom: 20px;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .search-bar {
-            width: 100%;
-            background: #000;
-            border: 1px solid #1a1a17;
-            color: var(--text-gray);
+        .subtitle {
+            font-style: italic;
+            color: #b5af9a;
+            font-size: 0.85rem;
+            margin: 8px auto 0;
+            display: block;
+            max-width: 90%;
+        }
+
+        nav {
             padding: 8px;
-            font-size: 0.8rem;
-            margin-bottom: 30px;
-            text-align: left;
+            background: #141412;
+            border-bottom: var(--border-style);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-bar {
+            background: #000;
+            border: 1px solid #4a422d;
+            color: var(--parchment);
+            padding: 10px;
+            width: 100%;
             box-sizing: border-box;
+            font-family: 'IM Fell English', serif;
+            font-size: 1rem;
         }
 
-        .label {
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.7rem;
+        .container {
+            padding: 10px 15px;
+        }
+
+        .sidebar h3 {
             color: var(--parchment);
-            margin: 25px 0 12px;
-            display: block;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-align: center;
+            border-bottom: var(--border-style);
+            padding-bottom: 5px;
+            margin: 15px 0 10px;
         }
 
-        /* Classification Button Grid */
-        .btn-grid {
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 5px;
-            margin-bottom: 25px;
+            gap: 6px;
         }
 
-        .btn {
-            border: 1px solid var(--gold-muted);
-            padding: 4px 12px;
-            font-size: 0.65rem;
-            color: var(--text-gray);
-            background: rgba(255,255,255,0.02);
-            text-transform: uppercase;
-        }
-
-        /* The Researcher Log Section */
-        .log-header {
-            border-top: 1px solid var(--gold-muted);
-            border-bottom: 1px solid var(--gold-muted);
-            padding: 5px 0;
-            margin-bottom: 15px;
-            color: var(--parchment);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.75rem;
-        }
-
-        .card {
-            border: 1px solid #1a1a17;
-            background: #0a0a09;
-            padding: 15px;
-            text-align: left;
-            margin-bottom: 10px;
+        .sidebar button, .sidebar a {
+            background: #1a1a17;
+            border: 1px solid #3d3622;
+            color: #a39c89;
+            padding: 5px 10px;
+            font-size: 0.85rem;
             text-decoration: none;
-            display: block;
+            font-family: 'IM Fell English', serif;
+            border-radius: 2px;
         }
 
-        .card:hover {
-            border-color: var(--accent-red);
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        .id-code {
+        .artifact-card {
+            background: #141412;
+            border: 1px solid #2e291b;
+            padding: 15px;
+        }
+
+        .artifact-card.hidden { display: none; }
+
+        .catalog-no {
+            font-size: 0.7rem;
             color: var(--accent-red);
-            font-family: monospace;
-            font-size: 0.6rem;
-            margin-bottom: 4px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .title {
-            font-size: 1.25rem;
-            margin: 2px 0;
-            color: var(--parchment);
-        }
-
-        .desc {
-            color: var(--text-gray);
-            font-size: 0.8rem;
-            line-height: 1.3;
-        }
+        h2 { font-size: 1.2rem; margin: 4px 0; color: var(--parchment); }
+        p { font-size: 0.9rem; margin: 0; color: var(--text-main); }
 
         footer {
-            margin-top: 40px;
-            color: #1a1a17;
-            font-size: 0.6rem;
-            text-transform: uppercase;
+            text-align: center;
+            padding: 30px 15px;
+            color: #5a5444;
+            font-size: 0.7rem;
+            border-top: var(--border-style);
+        }
+
+        @media (min-width: 850px) {
+            header { padding: 30px; }
+            .logo-img { width: 70px; }
+            h1 { font-size: 2.5rem; }
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 220px 1fr;
+                gap: 30px;
+            }
+            .sidebar { text-align: left; }
+            .sidebar ul { flex-direction: column; align-items: flex-start; }
+            .sidebar button, .sidebar a { background: none; border: none; padding: 0; }
+            .artifact-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
         }
     </style>
 </head>
 <body>
 
-    <div class="museum-wrap">
-        <div class="emblem"></div>
+<header>
+    <div class="brand-container">
+        <img src="Logopit_1776777067963.png" alt="Logo" class="logo-img">
         <h1>The Anatomia Archive</h1>
-        <div class="tagline">A Comprehensive Catalog of the Obscure, the Occult, and the Forgotten</div>
-
-        <div class="search-bar">Search the Ledger...</div>
-
-        <span class="label">Classifications</span>
-        <div class="btn-grid">
-            <div class="btn">All</div>
-            <div class="btn">Biological</div>
-            <div class="btn">Industrial</div>
-            <div class="btn">Ritualistic</div>
-        </div>
-
-        <div class="log-header">Researcher Logs</div>
-        
-        <div class="btn-grid" style="margin-bottom: 15px;">
-            <div class="btn">The Silt Expedition</div>
-            <div class="btn">Masquerade Protocols</div>
-        </div>
-
-        <a href="silt.html" class="card">
-            <div class="id-code">OBJ ID: 081-BW</div>
-            <div class="title">Blackwood Silt</div>
-            <div class="desc">Recovered from the Blackwood Basin. Displays advanced musculoskeletal mimicry and hypertonic resistance.</div>
-        </a>
-
-        <div class="card" style="opacity: 0.3; border-style: dashed;">
-            <div class="id-code">OBJ ID: ???</div>
-            <div class="title">Pending Entry...</div>
-            <div class="desc">Scheduled observation: The human form on the massage table. April 25th.</div>
-        </div>
-
-        <footer>© 1894 The Anatomia Archive // All Rights Reserved</footer>
     </div>
+    <span class="subtitle">A Comprehensive Catalog of the Obscure, the Occult, and the Forgotten</span>
+</header>
+
+<nav>
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search the Ledger..." onkeyup="filterArtifacts()">
+</nav>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Classifications</h3>
+        <ul>
+            <li><button onclick="filterCategory('all')">All</button></li>
+            <li><button onclick="filterCategory('biological')">Biological</button></li>
+            <li><button onclick="filterCategory('industrial')">Industrial</button></li>
+            <li><button onclick="filterCategory('ritual')">Ritualistic</button></li>
+        </ul>
+
+        <h3>Researcher Logs</h3>
+        <ul>
+            <li><a href="#">The Silt Expedition</a></li>
+            <li><a href="#">Masqueraide Protocols</a></li>
+        </ul>
+    </aside>
+
+    <main class="artifact-grid" id="artifactGrid">
+        <div class="artifact-card" data-category="biological">
+            <span class="catalog-no">OBJ ID: 001-CS</span>
+            <h2>The Calcified Sigh</h2>
+            <p>A human lung turned to solid alabaster. It is said to weigh more during a full moon.</p>
+        </div>
+
+        <div class="artifact-card" data-category="ritual">
+            <span class="catalog-no">OBJ ID: 081-BW</span>
+            <h2>Silt-Covered Boot</h2>
+            <p>Recovered from the Blackwood Silt. The mud remains wet regardless of ambient temperature.</p>
+        </div>
+
+        <div class="artifact-card" data-category="industrial">
+            <span class="catalog-no">OBJ ID: 052-IND</span>
+            <h2>The Brass Lung</h2>
+            <p>A mechanical bellows device used in early attempts to filter spiritual miasma from the air.</p>
+        </div>
+    </main>
+</div>
+
+<footer>
+    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
+</footer>
+
+<script>
+    function filterArtifacts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('artifact-card');
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].querySelector('h2').innerText.toLowerCase();
+            cards[i].classList.toggle('hidden', !title.includes(input));
+        }
+    }
+
+    function filterCategory(cat) {
+        let cards = document.getElementsByClassName('artifact-card');
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].classList.toggle('hidden', cat !== 'all' && cards[i].dataset.category !== cat);
+        }
+    }
+</script>
 
 </body>
 </html>
