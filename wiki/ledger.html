@@ -8,11 +8,12 @@
     <style>
         :root {
             --bg-color: #0d0d0c;
+            --card-bg: #141412;
             --parchment: #e2d1a4;
             --accent-red: #ff3333;
             --terminal-green: #00ff41;
             --text-main: #e0dbcd;
-            --border-style: 1px solid #4a422d;
+            --border-subtle: 1px solid #2e291b;
         }
 
         body {
@@ -23,11 +24,12 @@
             padding: 0;
         }
 
-        /* --- TIGHTENED HEADER --- */
+        /* --- HEADER ALIGNMENT --- */
         header {
             padding: 30px 20px;
-            border-bottom: var(--border-style);
-            background: #141412;
+            border-bottom: 1px solid #4a422d;
+            background: linear-gradient(to bottom, #1a1a17, #0d0d0c);
+            text-align: center; /* Centered to match the 'Pop' Bento style */
         }
 
         .system-status-label {
@@ -35,33 +37,34 @@
             font-family: 'Courier New', monospace;
             font-size: 0.75rem;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             letter-spacing: 2px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; /* Sized down from 2.2rem */
+            font-size: 1.8rem;
             margin: 0;
             color: var(--parchment);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+        }
+
+        .disconnect-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
         }
 
         .disconnect-link {
             color: var(--terminal-green);
             font-family: 'Courier New', monospace;
             text-decoration: none;
-            font-size: 0.9rem; /* Sized down to match footer terminal */
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
-            margin-top: 12px;
             transition: 0.2s;
             text-shadow: 0 0 5px rgba(0, 255, 65, 0.4);
-        }
-
-        .disconnect-link:hover {
-            text-shadow: 0 0 10px var(--terminal-green);
         }
 
         .mini-cursor {
@@ -78,88 +81,92 @@
             50% { opacity: 1; }
         }
 
+        /* --- BENTO VAULT GRID --- */
         .container {
-            padding: 20px;
-            max-width: 900px;
+            padding: 30px 15px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        /* --- BENTO GRID SYSTEM --- */
         .ledger-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
         .vault-entry {
-            background: #11110f;
-            border: 1px solid #2e291b;
-            padding: 20px;
+            background: var(--card-bg); /* Darker than body bg to create 'pop' */
+            border: var(--border-subtle);
+            padding: 35px 25px;
+            text-align: center; /* Matches your original pop-up style */
             position: relative;
-            transition: border 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
         }
 
         .vault-entry:hover {
-            border-color: #4a422d;
+            transform: translateY(-3px);
+            border-color: #3d3623;
         }
 
-        .vault-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #2e291b;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
+        /* The Red Glow Line from your original image */
+        .vault-entry::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 10%; width: 80%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+            opacity: 0.3;
         }
 
         .entry-id {
             color: var(--accent-red);
             font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 0.8rem;
-        }
-
-        .entry-date {
-            color: #666;
             font-size: 0.75rem;
-            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
         }
 
         .vault-entry h2 {
             font-family: 'Playfair Display', serif;
             color: var(--parchment);
-            margin: 0 0 10px 0;
-            font-size: 1.4rem; /* Scaled down for mobile bento feel */
+            margin: 0 0 15px 0;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
         }
 
         .vault-entry p {
-            font-size: 0.95rem; /* Sized down for "data" look */
+            font-size: 0.95rem;
             color: #b5af9a;
-            margin-bottom: 15px;
+            font-style: italic;
             line-height: 1.5;
+            margin: 0 auto 20px;
+            max-width: 90%;
         }
 
-        .metadata-tags {
+        .tag-row {
             display: flex;
-            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .tag {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             border: 1px solid #3d3623;
-            padding: 3px 8px;
-            color: #888;
+            padding: 3px 10px;
+            color: #7a7361;
             text-transform: uppercase;
             font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
         }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px;
             color: #444;
             font-size: 0.75rem;
-            border-top: var(--border-style);
         }
     </style>
 </head>
@@ -168,40 +175,44 @@
 <header>
     <span class="system-status-label">SYSTEM ACCESS: ROOT_LEDGER</span>
     <h1>The Unabridged Ledger</h1>
-    
-    <a href="index.html" class="disconnect-link">
-        <span style="margin-right:8px;">←</span> DISCONNECT
-        <span class="mini-cursor"></span>
-    </a>
+    <div class="disconnect-container">
+        <a href="index.html" class="disconnect-link">
+            <span style="margin-right:8px;">←</span> DISCONNECT
+            <span class="mini-cursor"></span>
+        </a>
+    </div>
 </header>
 
 <div class="container">
     <main class="ledger-grid">
         
         <article class="vault-entry">
-            <div class="vault-header">
-                <span class="entry-id">FILE_REF: ARCHIVE-001</span>
-                <span class="entry-date">Nov 1892</span>
-            </div>
-            <h2>The Anatomist's Bench</h2>
-            <p>Subject exhibited musculoskeletal mimicry consistent with local flora. The pulse remains rhythmically human, suggesting the forest is not consuming the form, but re-cataloging it.</p>
-            <div class="metadata-tags">
+            <span class="entry-id">Vault 01</span>
+            <h2>Biological Studies</h2>
+            <p>Specimens, Bone, and Tissue. Preliminary findings on musculoskeletal mimicry consistent with local flora.</p>
+            <div class="tag-row">
                 <span class="tag">Biological</span>
                 <span class="tag">Restricted</span>
-                <span class="tag">Field_Log</span>
             </div>
         </article>
 
         <article class="vault-entry">
-            <div class="vault-header">
-                <span class="entry-id">FILE_REF: ARCHIVE-004</span>
-                <span class="entry-date">Jan 1893</span>
-            </div>
-            <h2>The Shivering Compass</h2>
-            <p>Needle tracks localized aquatic currents flowing upward through the soil. The water is cold, saltless, and seemingly sentient.</p>
-            <div class="metadata-tags">
+            <span class="entry-id">Vault 02</span>
+            <h2>Industrial & Optics</h2>
+            <p>Machinery and Observation Tools. Specialized optics tuned to the frequency of lingering spiritual miasma.</p>
+            <div class="tag-row">
                 <span class="tag">Industrial</span>
                 <span class="tag">Classified</span>
+            </div>
+        </article>
+
+        <article class="vault-entry">
+            <span class="entry-id">Vault 03</span>
+            <h2>Ritual & Paper</h2>
+            <p>Manuscripts and Liturgical Remains. Hand-penned records detailing the non-physical voids.</p>
+            <div class="tag-row">
+                <span class="tag">Ritualistic</span>
+                <span class="tag">Archival</span>
             </div>
         </article>
 
