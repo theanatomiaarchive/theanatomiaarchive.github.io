@@ -102,7 +102,6 @@
             display: block;
             transition: all 0.3s ease;
             position: relative;
-            opacity: 1; /* Ensured full brightness for all items */
         }
 
         .artifact-card:hover {
@@ -166,33 +165,67 @@
             color: #fff;
         }
 
-        /* --- TERMINAL FOOTER NAVIGATION --- */
+        /* --- TERMINAL COMMAND INTERFACE --- */
         .archive-footer-nav {
             text-align: center;
-            padding: 80px 20px 40px;
-            width: 100%;
-            box-sizing: border-box;
+            padding: 80px 20px 60px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 255, 65, 0.02));
+            border-top: 1px solid #222;
+            margin-top: 50px;
         }
 
         .terminal-container {
-            margin-bottom: 25px;
+            margin-bottom: 5px;
         }
 
         .archive-count {
             font-family: 'Courier New', Courier, monospace; 
             color: var(--terminal-green);
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+        }
+
+        .command-line {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .archive-btn {
+            color: var(--accent-red);
+            text-decoration: none;
             text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+            font-weight: bold;
+            letter-spacing: 4px;
+            padding: 10px 20px;
+            transition: 0.2s;
+            position: relative;
             display: inline-block;
+        }
+
+        /* The [ ] Brackets that appear on hover */
+        .archive-btn::before { content: "> [ "; color: var(--terminal-green); opacity: 0; transition: 0.3s; }
+        .archive-btn::after { content: " ]"; color: var(--terminal-green); opacity: 0; transition: 0.3s; }
+
+        .archive-btn:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--accent-red);
+            background: rgba(255, 51, 51, 0.1);
+        }
+
+        .archive-btn:hover::before, 
+        .archive-btn:hover::after {
+            opacity: 1;
+            text-shadow: 0 0 8px var(--terminal-green);
         }
 
         .cursor {
             display: inline-block;
             width: 12px;
-            height: 1.4rem;
+            height: 1.2rem;
             background-color: var(--terminal-green);
             margin-left: 5px;
             vertical-align: middle;
@@ -202,25 +235,6 @@
         @keyframes blink {
             from, to { opacity: 0; }
             50% { opacity: 1; }
-        }
-
-        .archive-btn {
-            color: var(--accent-red);
-            text-decoration: none;
-            border: 2px solid #333;
-            padding: 14px 30px;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            background: #000;
-            display: inline-block;
-            font-family: 'IM Fell English', serif;
-        }
-
-        .archive-btn:hover {
-            border-color: var(--accent-red);
-            background: #0a0a0a;
-            box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
         }
 
         footer {
@@ -339,9 +353,13 @@
 
     <div class="archive-footer-nav">
         <div class="terminal-container">
-            <span class="archive-count">TOTAL ENTRIES DETECTED: 1,213<span class="cursor"></span></span>
+            <span class="archive-count">TOTAL ENTRIES DETECTED: 1,213</span>
         </div>
-        <a href="ledger.html" class="archive-btn">ACCESS UNABRIDGED LEDGER</a>
+        
+        <div class="command-line">
+            <a href="ledger.html" class="archive-btn">EXECUTE_UNABRIDGED_LEDGER</a>
+            <span class="cursor"></span>
+        </div>
     </div>
 </div>
 
