@@ -93,7 +93,6 @@
             gap: 20px;
         }
 
-        /* CARD STYLES */
         .artifact-card {
             background: #141412;
             border: 1px solid #2e291b;
@@ -110,7 +109,6 @@
             transform: translateY(-2px);
         }
 
-        /* Saturday Story highlighting */
         .artifact-card.saturday-item {
             border: 1px solid #6e1a1a;
             background: #1a0f0f;
@@ -148,7 +146,6 @@
 
         .hidden { display: none; }
 
-        /* FILTERS */
         .filters {
             display: flex;
             justify-content: center;
@@ -170,6 +167,37 @@
         .filters button:hover {
             border-color: var(--accent-red);
             color: #fff;
+        }
+
+        /* DEEP ARCHIVE LINK */
+        .archive-footer-nav {
+            text-align: center;
+            padding: 60px 0 20px;
+        }
+
+        .archive-count {
+            color: #444;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .archive-btn {
+            color: var(--accent-red);
+            text-decoration: none;
+            border: 1px solid #333;
+            padding: 12px 25px;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            background: #000;
+            display: inline-block;
+        }
+
+        .archive-btn:hover {
+            border-color: var(--accent-red);
+            background: #0a0a0a;
         }
 
         footer {
@@ -283,8 +311,12 @@
             <h2>The Shivering Compass</h2>
             <p>The Tide Beneath the Floorboards. A navigator for localized aquatic currents.</p>
         </div>
-
     </main>
+
+    <div class="archive-footer-nav">
+        <p class="archive-count">TOTAL ENTRIES DETECTED: 1,402</p>
+        <a href="ledger.html" class="archive-btn">ACCESS UNABRIDGED LEDGER</a>
+    </div>
 </div>
 
 <footer>
