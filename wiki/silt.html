@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OBJ-081-BW | The Ledger</title>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0a0a09;
@@ -32,8 +32,26 @@
             padding: 4px 0;
         }
 
+        .nav-back {
+            padding: 15px;
+        }
+
+        .nav-back a {
+            color: var(--paper);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .nav-back a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
         header {
-            padding: 40px 20px;
+            padding: 20px 20px 40px;
             border-bottom: var(--border);
             text-align: center;
         }
@@ -41,20 +59,21 @@
         .catalog-id {
             font-family: var(--code-font);
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             display: block;
             margin-bottom: 10px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin: 0;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .main-content {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -84,16 +103,16 @@
 
         .observation-box {
             border-left: 3px solid var(--accent);
-            padding-left: 20px;
+            padding: 20px;
             margin: 40px 0;
             background: rgba(148, 30, 30, 0.05);
-            padding: 20px;
         }
 
         .observation-box h3 {
             margin-top: 0;
             font-family: 'Playfair Display', serif;
             font-style: italic;
+            color: var(--paper);
         }
 
         .anatomical-note {
@@ -104,21 +123,38 @@
             margin-top: 20px;
         }
 
+        .timestamp-label {
+            display: inline-block;
+            background: #1a1a17;
+            color: var(--accent);
+            font-family: var(--code-font);
+            padding: 4px 10px;
+            border: 1px solid var(--accent);
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+
         footer {
             text-align: center;
             padding: 60px;
             font-size: 0.8rem;
             opacity: 0.5;
+            border-top: var(--border);
         }
 
         @media (max-width: 600px) {
             .spec-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="status-bar">Classified Record // Unauthorized Access Prohibited</div>
+
+<div class="nav-back">
+    <a href="index.html">← RETURN TO THE LEDGER</a>
+</div>
 
 <header>
     <span class="catalog-id">SPECIMEN ID: 081-BW</span>
@@ -134,7 +170,7 @@
             <span>Active / Dormant (Cycling)</span>
         </div>
         <div class="spec-item">
-            <label>Temperature</label>
+            <label>Internal Temperature</label>
             <span>Constant 37.0°C</span>
         </div>
         <div class="spec-item">
@@ -142,7 +178,7 @@
             <span>1.500 cP (Variable)</span>
         </div>
         <div class="spec-item">
-            <label>Discovery Date</label>
+            <label>Historical Discovery</label>
             <span>September 1892</span>
         </div>
     </div>
@@ -163,16 +199,16 @@
 
     <section>
         <h2>II. The "Saturday" Event Log</h2>
-        <p>Records indicate a primary surge in activity occurs in cycles. The next projected surge aligns with the upcoming Saturday. Previous custodians noted a "searching" behavior during these windows. It is currently fixated on the massage table in the lower workshop.</p>
+        <div class="timestamp-label">ACTIVE WINDOW: April 25, 2026 | 21:14 CST</div>
+        <p>Records indicate a primary surge in activity occurs in cycles. The next projected surge aligns with the timestamp above. Previous custodians noted a "searching" behavior during these windows. As of this entry, the specimen has successfully permeated the upholstery of the massage table in the lower workshop.</p>
     </section>
 
 </div>
 
 <footer>
-    Part of the Anatomia Archive | Custodian: A. Tyler <br>
+    Part of the Anatomia Archive | Custodian: Aaron Tyler <br>
     Tulsa, OK | Digital Sarcophagus Protocol Active
 </footer>
 
 </body>
 </html>
-
