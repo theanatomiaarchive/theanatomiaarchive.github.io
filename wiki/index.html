@@ -16,7 +16,7 @@
         
         body { background: var(--bg); color: #b5af9a; font-family: 'IM Fell English', serif; margin: 0; overflow-x: hidden; }
 
-        /* --- COMPACT HEADER --- */
+        /* --- COMPACT HEADER (Matches Unabridged Ledger) --- */
         header { 
             padding: 25px 20px 15px; 
             border-bottom: 3px double var(--red); 
@@ -42,7 +42,7 @@
             margin-bottom: 2px;
         }
 
-        /* --- FILTER BUTTON FIX --- */
+        /* --- FILTER BUTTONS (RESORED TEXT VISIBILITY) --- */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -56,11 +56,11 @@
             border: 1px solid #4a422d;
             color: var(--parchment);
             font-family: 'IM Fell English', serif;
-            padding: 10px 20px; /* Restored padding to ensure text is visible */
+            padding: 10px 20px; /* Restored for visibility */
             cursor: pointer;
             transition: 0.3s;
             font-size: 0.85rem;
-            min-width: 80px; /* Prevents box collapse */
+            min-width: 85px; /* Ensures text like 'VIEW ALL' doesn't crush */
             text-transform: uppercase;
             letter-spacing: 1px;
             display: flex;
@@ -75,31 +75,33 @@
             box-shadow: 0 0 10px rgba(255, 51, 51, 0.2);
         }
 
-        /* --- GRID & CARDS --- */
+        /* --- ARTIFACT GRID --- */
         .archive-grid {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 25px;
         }
 
         .artifact-card {
-            background: #111;
+            background: #0d0d0c;
             border: 1px solid #222;
-            padding: 20px;
+            padding: 25px;
             transition: 0.4s;
             text-decoration: none;
             color: inherit;
+            display: block;
         }
 
         .artifact-card:hover {
             border-color: var(--red);
             transform: translateY(-5px);
+            background: #111;
         }
 
-        /* --- TERMINAL LINK --- */
+        /* --- TERMINAL GREEN LINK --- */
         .terminal-link {
             color: var(--terminal-green);
             font-family: 'Courier New', monospace;
@@ -121,7 +123,7 @@
         }
         @keyframes cursorBlink { from, to { opacity: 0; } 50% { opacity: 1; } }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid #222; margin-top: 40px; }
+        footer { text-align: center; padding: 60px 40px; border-top: 1px solid #222; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -145,15 +147,28 @@
 
 <main class="archive-grid">
     <a href="exhibit-a.html" class="artifact-card">
-        <span style="color:var(--red); font-size: 0.7rem; letter-spacing: 2px;">EXHIBIT A</span>
-        <h2 style="color:var(--parchment); font-family:'Playfair Display';">The Silt Specimen</h2>
-        <p style="font-size: 0.9rem; font-style: italic;">Musculoskeletal mimicry recovered from the Blackwood site.</p>
+        <span style="color:var(--red); font-size: 0.7rem; letter-spacing: 2px; font-weight: bold;">EXHIBIT A</span>
+        <h2 style="color:var(--parchment); font-family:'Playfair Display'; margin: 10px 0;">The Theater of Rot</h2>
+        <p style="font-size: 0.95rem; font-style: italic; color: #b5af9a;">Sealed bell jar containing rapid cellular collapse.</p>
     </a>
-    
-    </main>
+
+    <a href="exhibit-b.html" class="artifact-card">
+        <span style="color:var(--red); font-size: 0.7rem; letter-spacing: 2px; font-weight: bold;">EXHIBIT B</span>
+        <h2 style="color:var(--parchment); font-family:'Playfair Display'; margin: 10px 0;">The Lens of Observation</h2>
+        <p style="font-size: 0.95rem; font-style: italic; color: #b5af9a;">Optics tuned to lingering spiritual miasma.</p>
+    </a>
+
+    <a href="exhibit-c.html" class="artifact-card">
+        <span style="color:var(--red); font-size: 0.7rem; letter-spacing: 2px; font-weight: bold;">EXHIBIT C</span>
+        <h2 style="color:var(--parchment); font-family:'Playfair Display'; margin: 10px 0;">The Voice of the Vines</h2>
+        <p style="font-size: 0.95rem; font-style: italic; color: #b5af9a;">Calcified root structures with a rhythmic thrum.</p>
+    </a>
+</main>
 
 <footer>
-    <span style="font-style: italic; color: var(--dim);">Property of Masqueraide Workshop &copy; 2026</span>
+    <p style="font-style: italic; color: var(--dim); letter-spacing: 1px;">
+        Property of Masqueraide Workshop &copy; 2026
+    </p>
 </footer>
 
 </body>
