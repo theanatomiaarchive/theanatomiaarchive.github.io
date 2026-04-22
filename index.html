@@ -11,7 +11,7 @@
             --parchment: #e2d1a4;
             --accent-red: #b32d2d;
             --text-main: #e0dbcd;
-            --border-style: 2px solid #4a422d;
+            --border-style: 1px solid #4a422d;
         }
 
         body {
@@ -20,16 +20,14 @@
             font-family: 'IM Fell English', serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
+        /* --- Header: Tightened for Mobile --- */
         header {
-            padding: 40px 15px;
+            padding: 25px 10px;
             border-bottom: var(--border-style);
             background: linear-gradient(to bottom, #1a1a17, #0d0d0c);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
         }
 
@@ -37,37 +35,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            width: 100%;
+            gap: 12px;
         }
 
         .logo-img {
-            width: clamp(50px, 12vw, 85px);
+            width: 50px;
             height: auto;
-            filter: drop-shadow(0 0 8px rgba(179, 45, 45, 0.4));
+            filter: drop-shadow(0 0 5px rgba(179, 45, 45, 0.4));
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 7vw, 3.5rem); 
+            font-size: 1.4rem;
             margin: 0;
             color: var(--parchment);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .subtitle {
             font-style: italic;
             color: #b5af9a;
-            font-size: clamp(1rem, 4.5vw, 1.4rem);
-            margin-top: 20px;
-            max-width: 85%;
+            font-size: 0.9rem;
+            margin: 10px auto 0;
+            display: block;
+            max-width: 90%;
         }
 
+        /* --- Search Bar --- */
         nav {
-            display: flex;
-            justify-content: center;
-            padding: 15px;
+            padding: 10px;
             background: #141412;
             border-bottom: var(--border-style);
             position: sticky;
@@ -76,119 +73,124 @@
         }
 
         .search-bar {
-            background: #1a1a17;
-            border: 1px solid var(--border-style);
+            background: #000;
+            border: 1px solid #4a422d;
             color: var(--parchment);
-            padding: 12px;
-            width: 90%;
-            max-width: 450px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
             font-family: 'IM Fell English', serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
+        /* --- Main Layout --- */
         .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 40px;
-            padding: 0 20px;
+            padding: 15px;
         }
 
         .sidebar h3 {
             color: var(--parchment);
             text-transform: uppercase;
-            font-size: 1rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
-            border-bottom: 1px solid var(--border-style);
-            padding-bottom: 8px;
-            margin-top: 30px;
+            text-align: center;
+            border-bottom: var(--border-style);
+            padding-bottom: 5px;
+            margin: 20px 0 10px;
         }
 
+        /* Compact buttons for mobile nav */
         .sidebar ul {
             list-style: none;
             padding: 0;
-        }
-
-        .sidebar li {
-            margin: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
 
         .sidebar button, .sidebar a {
-            background: none;
-            border: none;
+            background: #1a1a17;
+            border: 1px solid #3d3622;
             color: #a39c89;
+            padding: 6px 12px;
+            font-size: 0.9rem;
             text-decoration: none;
-            font-size: 1.1rem;
-            cursor: pointer;
             font-family: 'IM Fell English', serif;
-            transition: 0.3s;
-            text-align: left;
-            padding: 0;
+            border-radius: 2px;
         }
 
-        .sidebar button:hover, .sidebar a:hover {
-            color: var(--parchment);
-            padding-left: 5px;
+        .sidebar button:active {
+            background: var(--accent-red);
+            color: #fff;
         }
 
+        /* --- Artifact Grid --- */
         .artifact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .artifact-card {
             background: #141412;
-            border: 1px solid #3d3622;
-            padding: 25px;
-            transition: 0.3s;
-            display: block; /* Important for filtering */
+            border: 1px solid #2e291b;
+            padding: 15px;
         }
 
-        .artifact-card.hidden {
-            display: none;
-        }
+        .artifact-card.hidden { display: none; }
 
         .img-frame {
             width: 100%;
-            height: 180px;
+            aspect-ratio: 16/9;
             background: #0d0d0c;
             border: 1px solid #2e291b;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.8rem;
             color: #5a5444;
             font-style: italic;
         }
 
         .catalog-no {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--accent-red);
             font-weight: bold;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
-        .redacted {
-            background-color: #222;
-            color: #222;
-            padding: 0 4px;
-        }
+        h2 { font-size: 1.3rem; margin: 5px 0; color: var(--parchment); }
+        p { font-size: 0.95rem; margin: 0; color: var(--text-main); }
+
+        .redacted { background: #222; color: #222; padding: 0 3px; }
 
         footer {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 15px;
             color: #5a5444;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             border-top: var(--border-style);
-            margin-top: 80px;
         }
 
-        @media (max-width: 850px) {
-            .container { grid-template-columns: 1fr; }
-            .sidebar { text-align: center; }
-            .sidebar ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        /* --- Desktop Scaling --- */
+        @media (min-width: 850px) {
+            header { padding: 40px; }
+            .logo-img { width: 80px; }
+            h1 { font-size: 3rem; }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 240px 1fr;
+                gap: 40px;
+            }
+            .sidebar { text-align: left; }
+            .sidebar ul { flex-direction: column; align-items: flex-start; }
+            .sidebar button, .sidebar a { background: none; border: none; padding: 0; }
+            .artifact-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
         }
     </style>
 </head>
@@ -196,7 +198,7 @@
 
 <header>
     <div class="brand-container">
-        <img src="Logopit_1776777067963.png" alt="Anatomia Archive Logo" class="logo-img">
+        <img src="Logopit_1776777067963.png" alt="Logo" class="logo-img">
         <h1>The Anatomia Archive</h1>
     </div>
     <span class="subtitle">A Comprehensive Catalog of the Obscure, the Occult, and the Forgotten</span>
@@ -210,40 +212,32 @@
     <aside class="sidebar">
         <h3>Classifications</h3>
         <ul>
-            <li><button onclick="filterCategory('all')">All Entries</button></li>
+            <li><button onclick="filterCategory('all')">All</button></li>
             <li><button onclick="filterCategory('biological')">Biological</button></li>
             <li><button onclick="filterCategory('industrial')">Industrial</button></li>
             <li><button onclick="filterCategory('ritualistic')">Ritualistic</button></li>
         </ul>
 
-        <h3>Researcher Logs</h3>
+        <h3>Logs</h3>
         <ul>
-            <li><a href="#">The Silt Expedition</a></li>
-            <li><a href="#">Masqueraide Protocols</a></li>
-            <li><a href="#">Unidentified Remains</a></li>
+            <li><a href="#">Expeditions</a></li>
+            <li><a href="#">Protocols</a></li>
         </ul>
     </aside>
 
     <main class="artifact-grid" id="artifactGrid">
         <div class="artifact-card" data-category="biological">
-            <div class="img-frame">Image Pending Extraction</div>
-            <span class="catalog-no">Obj ID: 001-CS</span>
+            <div class="img-frame">Image Pending</div>
+            <span class="catalog-no">OBJ ID: 001-CS</span>
             <h2>The Calcified Sigh</h2>
             <p>A human lung turned to solid alabaster. It is said to weigh more during a full moon.</p>
         </div>
 
         <div class="artifact-card" data-category="ritualistic">
-            <div class="img-frame">Image Pending Extraction</div>
-            <span class="catalog-no">Obj ID: 081-BW</span>
+            <div class="img-frame">Image Pending</div>
+            <span class="catalog-no">OBJ ID: 081-BW</span>
             <h2>Silt-Covered Boot</h2>
-            <p>Recovered from the <span class="redacted">Blackwood Silt</span>. The mud remains wet regardless of ambient temperature.</p>
-        </div>
-
-        <div class="artifact-card" data-category="industrial">
-            <div class="img-frame">Image Pending Extraction</div>
-            <span class="catalog-no">Obj ID: 052-IND</span>
-            <h2>The Brass Lung</h2>
-            <p>A mechanical bellows device used in early attempts to filter "spiritual miasma" from the air.</p>
+            <p>Recovered from the <span class="redacted">Blackwood Silt</span>. The mud remains wet regardless of temperature.</p>
         </div>
     </main>
 </div>
@@ -253,32 +247,19 @@
 </footer>
 
 <script>
-    // Search function
     function filterArtifacts() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.getElementsByClassName('artifact-card');
-
         for (let i = 0; i < cards.length; i++) {
-            let title = cards[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
-            let text = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
-            if (title.includes(input) || text.includes(input)) {
-                cards[i].classList.remove('hidden');
-            } else {
-                cards[i].classList.add('hidden');
-            }
+            let title = cards[i].querySelector('h2').innerText.toLowerCase();
+            cards[i].classList.toggle('hidden', !title.includes(input));
         }
     }
 
-    // Category Filter function
-    function filterCategory(category) {
+    function filterCategory(cat) {
         let cards = document.getElementsByClassName('artifact-card');
-        
         for (let i = 0; i < cards.length; i++) {
-            if (category === 'all' || cards[i].getAttribute('data-category') === category) {
-                cards[i].classList.remove('hidden');
-            } else {
-                cards[i].classList.add('hidden');
-            }
+            cards[i].classList.toggle('hidden', cat !== 'all' && cards[i].dataset.category !== cat);
         }
     }
 </script>
