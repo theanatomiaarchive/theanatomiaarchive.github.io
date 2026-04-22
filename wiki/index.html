@@ -11,9 +11,9 @@
         :root {
             --bg-color: #0d0d0c;
             --parchment: #e2d1a4;
-            --accent-red: #ff3333; 
+            --accent-red: #ff3333; /* Our New Brighter Crimson */
+            --gold-dim: #4a422d;
             --text-main: #e0dbcd;
-            --border-style: 1px solid #4a422d;
         }
 
         body {
@@ -21,82 +21,127 @@
             color: var(--text-main);
             font-family: 'IM Fell English', serif;
             margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
+            padding: 20px;
         }
 
-        .ledger-wrapper {
-            max-width: 800px;
+        .ledger-container {
+            max-width: 600px;
             width: 100%;
-            padding: 40px 20px;
+            text-align: center;
         }
 
-        .ledger-header {
-            border-bottom: 2px solid var(--accent-red);
-            padding-bottom: 10px;
-            margin-bottom: 40px;
+        /* The Circular Emblem Header */
+        .emblem {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: url('../Logopit_1776777067963.png') no-repeat center;
+            background-size: contain;
+            border: 1px solid var(--gold-dim);
+            border-radius: 50%;
+            padding: 5px;
         }
 
         h1 {
-            color: var(--accent-red);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        .specimen-list {
-            margin-top: 30px;
-        }
-
-        .specimen-link {
-            display: block;
             color: var(--parchment);
-            text-decoration: none;
-            padding: 15px;
-            border: 1px solid transparent;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            font-size: 1.8rem;
         }
 
-        .specimen-link:hover {
-            border: 1px solid var(--accent-red);
-            color: var(--accent-red);
+        .subtitle {
+            font-style: italic;
+            color: var(--gold-dim);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        /* The Gold Grid Sections */
+        .section-label {
+            color: var(--parchment);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            margin: 20px 0 10px;
+            border-bottom: 1px solid var(--gold-dim);
+            display: inline-block;
+            padding: 0 20px 5px;
+        }
+
+        /* Specimen Entry Cards */
+        .specimen-card {
+            border: 1px solid var(--gold-dim);
+            background: rgba(26, 26, 23, 0.5);
+            margin-bottom: 15px;
+            padding: 20px;
+            text-align: left;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .specimen-card:hover {
+            border-color: var(--accent-red);
             background: rgba(255, 51, 51, 0.05);
-            padding-left: 25px; /* Slight shift effect on hover */
+        }
+
+        .obj-id {
+            color: var(--accent-red);
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .specimen-name {
+            color: var(--parchment);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin: 5px 0;
+        }
+
+        .specimen-desc {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         footer {
-            margin-top: 80px;
-            border-top: 1px solid #1a1a17;
-            padding-top: 30px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #444;
-            letter-spacing: 1px;
+            margin-top: 50px;
+            color: #333;
+            font-size: 0.7rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="ledger-wrapper">
-        <div class="ledger-header">
-            <h1>The Ledger</h1>
-            <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Total Specimens Documented: [001] / 100</p>
-        </div>
+    <div class="ledger-container">
+        <div class="emblem"></div>
+        <h1>The Ledger</h1>
+        <div class="subtitle">A Curated Record of the Anatomia Archive | Est. 1892</div>
+
+        <div class="section-label">Field Reports</div>
 
         <div class="specimen-list">
-            <a href="silt.html" class="specimen-link">
-                [001] - Blackwood Silt (Musculoskeletal Mimicry)
+            <a href="silt.html" class="specimen-card">
+                <div class="obj-id">OBJ ID: 081-BW</div>
+                <div class="specimen-name">Blackwood Silt</div>
+                <div class="specimen-desc">Recovered from the Blackwood Basin. Displays advanced musculoskeletal mimicry and hypertonic resistance.</div>
             </a>
+
+            <div class="specimen-card" style="opacity: 0.5; border-style: dashed;">
+                <div class="obj-id">OBJ ID: ???</div>
+                <div class="specimen-name">Pending Entry...</div>
+                <div class="specimen-desc">The human form on the massage table. Observation scheduled for April 25th.</div>
             </div>
+        </div>
 
         <footer>
-            <p>© 1894 The Anatomia Archive // All Rights Reserved</p>
+            © 1894 The Anatomia Archive // All Rights Reserved
         </footer>
     </div>
 
