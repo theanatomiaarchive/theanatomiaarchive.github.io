@@ -11,7 +11,7 @@
             --bg-color: #080808;
             --parchment: #e2d1a4;
             --accent-red: #ff3333;
-            --text-dim: #888273; /* Lightened for legibility */
+            --text-dim: #888273;
             --text-main: #b5af9a;
             --border-dim: 1px solid #222;
         }
@@ -122,7 +122,6 @@
             color: #444;
         }
 
-        /* CENTERED NAVIGATION */
         .back-nav {
             padding: 60px 20px 20px;
             text-align: center;
@@ -173,6 +172,14 @@
 </header>
 
 <div class="ledger-container">
+    
+    <div class="ledger-entry" style="border: 1px solid var(--accent-red); background: rgba(255, 51, 51, 0.05);">
+        <span class="entry-id">ITEM 000</span>
+        <a href="protocols.html" class="entry-link" style="color: var(--accent-red);">The Masqueraide Protocols</a>
+        <span class="entry-desc">Mandatory orientation for all Archive observers.</span>
+        <span class="entry-status">Priority: HIGH</span>
+    </div>
+
     <div class="ledger-entry">
         <span class="entry-id">EXHIBIT A</span>
         <a href="theater-of-rot.html" class="entry-link">Theater of Rot</a>
@@ -279,7 +286,6 @@
 <footer>
     &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive. <br>
     <span style="font-style: italic; color: #ff3333;">Records are for authorized eyes only.</span>
-
 </footer>
 
 </body>
