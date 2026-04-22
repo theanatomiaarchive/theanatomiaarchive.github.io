@@ -23,7 +23,6 @@
             line-height: 1.6;
         }
 
-        /* Header Section */
         header {
             padding: 40px 15px;
             border-bottom: var(--border-style);
@@ -40,11 +39,10 @@
             justify-content: center;
             gap: 15px;
             width: 100%;
-            max-width: 900px;
         }
 
         .logo-img {
-            width: clamp(50px, 12vw, 85px); /* Responsive sizing for your logo */
+            width: clamp(50px, 12vw, 85px);
             height: auto;
             filter: drop-shadow(0 0 8px rgba(179, 45, 45, 0.4));
         }
@@ -56,7 +54,6 @@
             color: var(--parchment);
             text-transform: uppercase;
             letter-spacing: 2px;
-            line-height: 1.1;
         }
 
         .subtitle {
@@ -64,11 +61,9 @@
             color: #b5af9a;
             font-size: clamp(1rem, 4.5vw, 1.4rem);
             margin-top: 20px;
-            letter-spacing: 0.5px;
             max-width: 85%;
         }
 
-        /* Navigation & Search */
         nav {
             display: flex;
             justify-content: center;
@@ -91,7 +86,6 @@
             font-size: 1.1rem;
         }
 
-        /* Layout */
         .container {
             max-width: 1200px;
             margin: 30px auto;
@@ -104,10 +98,11 @@
         .sidebar h3 {
             color: var(--parchment);
             text-transform: uppercase;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 2px;
             border-bottom: 1px solid var(--border-style);
             padding-bottom: 8px;
+            margin-top: 30px;
         }
 
         .sidebar ul {
@@ -115,15 +110,28 @@
             padding: 0;
         }
 
-        .sidebar a {
-            color: #a39c89;
-            text-decoration: none;
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 10px;
+        .sidebar li {
+            margin: 10px 0;
         }
 
-        /* Artifact Grid */
+        .sidebar button, .sidebar a {
+            background: none;
+            border: none;
+            color: #a39c89;
+            text-decoration: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-family: 'IM Fell English', serif;
+            transition: 0.3s;
+            text-align: left;
+            padding: 0;
+        }
+
+        .sidebar button:hover, .sidebar a:hover {
+            color: var(--parchment);
+            padding-left: 5px;
+        }
+
         .artifact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -135,11 +143,11 @@
             border: 1px solid #3d3622;
             padding: 25px;
             transition: 0.3s;
+            display: block; /* Important for filtering */
         }
 
-        .artifact-card:hover {
-            border-color: var(--parchment);
-            transform: translateY(-3px);
+        .artifact-card.hidden {
+            display: none;
         }
 
         .img-frame {
@@ -177,23 +185,10 @@
             margin-top: 80px;
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 850px) {
             .container { grid-template-columns: 1fr; }
-            .sidebar ul {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand-container {
-                flex-direction: row;
-                gap: 10px;
-            }
-            h1 { font-size: 1.4rem; }
+            .sidebar { text-align: center; }
+            .sidebar ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
         }
     </style>
 </head>
@@ -208,34 +203,47 @@
 </header>
 
 <nav>
-    <input type="text" class="search-bar" placeholder="Search the Ledger...">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search the Ledger..." onkeyup="filterArtifacts()">
 </nav>
 
 <div class="container">
     <aside class="sidebar">
         <h3>Classifications</h3>
         <ul>
-            <li><a href="#">Biological</a></li>
-            <li><a href="#">Industrial</a></li>
-            <li><a href="#">Household</a></li>
-            <li><a href="#">Ritualistic</a></li>
-            <li><a href="#">Blackwood Silt</a></li>
+            <li><button onclick="filterCategory('all')">All Entries</button></li>
+            <li><button onclick="filterCategory('biological')">Biological</button></li>
+            <li><button onclick="filterCategory('industrial')">Industrial</button></li>
+            <li><button onclick="filterCategory('ritualistic')">Ritualistic</button></li>
+        </ul>
+
+        <h3>Researcher Logs</h3>
+        <ul>
+            <li><a href="#">The Silt Expedition</a></li>
+            <li><a href="#">Masqueraide Protocols</a></li>
+            <li><a href="#">Unidentified Remains</a></li>
         </ul>
     </aside>
 
-    <main class="artifact-grid">
-        <div class="artifact-card">
+    <main class="artifact-grid" id="artifactGrid">
+        <div class="artifact-card" data-category="biological">
             <div class="img-frame">Image Pending Extraction</div>
             <span class="catalog-no">Obj ID: 001-CS</span>
             <h2>The Calcified Sigh</h2>
             <p>A human lung turned to solid alabaster. It is said to weigh more during a full moon.</p>
         </div>
 
-        <div class="artifact-card">
+        <div class="artifact-card" data-category="ritualistic">
             <div class="img-frame">Image Pending Extraction</div>
             <span class="catalog-no">Obj ID: 081-BW</span>
             <h2>Silt-Covered Boot</h2>
             <p>Recovered from the <span class="redacted">Blackwood Silt</span>. The mud remains wet regardless of ambient temperature.</p>
+        </div>
+
+        <div class="artifact-card" data-category="industrial">
+            <div class="img-frame">Image Pending Extraction</div>
+            <span class="catalog-no">Obj ID: 052-IND</span>
+            <h2>The Brass Lung</h2>
+            <p>A mechanical bellows device used in early attempts to filter "spiritual miasma" from the air.</p>
         </div>
     </main>
 </div>
@@ -243,6 +251,37 @@
 <footer>
     &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
 </footer>
+
+<script>
+    // Search function
+    function filterArtifacts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('artifact-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+            let text = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+            if (title.includes(input) || text.includes(input)) {
+                cards[i].classList.remove('hidden');
+            } else {
+                cards[i].classList.add('hidden');
+            }
+        }
+    }
+
+    // Category Filter function
+    function filterCategory(category) {
+        let cards = document.getElementsByClassName('artifact-card');
+        
+        for (let i = 0; i < cards.length; i++) {
+            if (category === 'all' || cards[i].getAttribute('data-category') === category) {
+                cards[i].classList.remove('hidden');
+            } else {
+                cards[i].classList.add('hidden');
+            }
+        }
+    }
+</script>
 
 </body>
 </html>
