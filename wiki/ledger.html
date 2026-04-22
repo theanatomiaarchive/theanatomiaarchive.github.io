@@ -19,15 +19,37 @@
         .scanner-line { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(255,51,51,0.2); box-shadow: 0 0 10px var(--red); z-index: 1000; pointer-events: none; animation: scan 8s linear infinite; }
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
-        header { padding: 40px 20px; border-bottom: 3px double var(--red); max-width: 1200px; margin: 0 auto; }
-        h1 { font-family: 'Playfair Display', serif; color: var(--parchment); text-transform: uppercase; letter-spacing: 4px; margin: 10px 0; font-size: 1.8rem; }
+        /* --- COMPACT HEADER --- */
+        header { 
+            padding: 25px 20px 15px; 
+            border-bottom: 3px double var(--red); 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
 
-        /* The Green Command Prompt */
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--parchment); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin: 5px 0; 
+            font-size: 1.4rem; /* Scaled down to match Index */
+        }
+
+        .system-status-header {
+            color: var(--red); 
+            font-weight: bold; 
+            font-size: 0.7rem; 
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+        }
+
+        /* --- TERMINAL LINK --- */
         .terminal-disconnect {
             color: var(--terminal-green);
             font-family: 'Courier New', monospace;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
             transition: 0.2s;
@@ -41,10 +63,10 @@
         }
         .mini-cursor {
             display: inline-block;
-            width: 8px;
-            height: 1rem;
+            width: 7px;
+            height: 0.9rem;
             background-color: var(--terminal-green);
-            margin-left: 8px;
+            margin-left: 6px;
             animation: cursorBlink 1s step-end infinite;
         }
         @keyframes cursorBlink { from, to { opacity: 0; } 50% { opacity: 1; } }
@@ -54,8 +76,8 @@
         
         .vault-block { background: #111; border: 1px solid #222; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
         .vault-block:hover { border-color: var(--red); background: #1a0f0f; transform: translateY(-5px); }
-        .vault-block h2 { color: var(--parchment); margin: 0; font-family: 'Playfair Display', serif; font-size: 1.4rem; }
-        .vault-block span { color: var(--red); font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; }
+        .vault-block h2 { color: var(--parchment); margin: 0; font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+        .vault-block span { color: var(--red); font-size: 0.75rem; letter-spacing: 2px; font-weight: bold; }
 
         /* THE MODAL */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 2000; justify-content: center; align-items: center; }
@@ -74,8 +96,8 @@
 <div class="scanner-line"></div>
 
 <header>
-    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 15px;">
-        <div style="color: var(--red); font-weight: bold; font-size: 0.8rem; letter-spacing: 2px;">SYSTEM ACCESS: ROOT_LEDGER</div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px;">
+        <div class="system-status-header">SYSTEM ACCESS: ROOT_LEDGER</div>
         <a href="index.html" class="terminal-disconnect">
             ← DISCONNECT <span class="mini-cursor"></span>
         </a>
@@ -87,25 +109,25 @@
     <div class="vault-block" onclick="openVault('Biological Studies', 1, 300)">
         <span>VAULT 01</span>
         <h2>Biological Studies</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Specimens, Bone, and Tissue</p>
+        <p style="font-size: 0.75rem; opacity: 0.5;">Specimens, Bone, and Tissue</p>
     </div>
 
     <div class="vault-block" onclick="openVault('Industrial Gear', 301, 600)">
         <span>VAULT 02</span>
         <h2>Industrial & Optics</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Machinery and Observation Tools</p>
+        <p style="font-size: 0.75rem; opacity: 0.5;">Machinery and Observation Tools</p>
     </div>
 
     <div class="vault-block" onclick="openVault('Ritual Records', 601, 900)">
         <span>VAULT 03</span>
         <h2>Ritual & Paper</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Manuscripts and Liturgical Remains</p>
+        <p style="font-size: 0.75rem; opacity: 0.5;">Manuscripts and Liturgical Remains</p>
     </div>
 
     <div class="vault-block" onclick="openVault('Unclassified', 901, 1200)">
         <span>VAULT 04</span>
         <h2>Unclassified</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Active Containment / Hazardous</p>
+        <p style="font-size: 0.75rem; opacity: 0.5;">Active Containment / Hazardous</p>
     </div>
 </div>
 
@@ -122,7 +144,7 @@
         ← RETURN TO MAIN LEDGER <span class="mini-cursor"></span>
     </a><br><br>
     <span style="font-style: italic; color: #ff3333; font-size: 0.8rem; letter-spacing: 1px;">
-        WARNING: All access attempts are logged. Records for authorized eyes only.
+        WARNING: Records for authorized eyes only. Access logged.
     </span>
 </footer>
 
@@ -145,29 +167,22 @@
             } else {
                 a.innerText = "EXHIBIT " + i;
             }
-
             list.appendChild(a);
         }
 
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
-
-        // Push a fake state to the browser history so the back button can be intercepted
         window.history.pushState({ modalOpen: true }, "");
     }
 
     function closeVault() {
-        const modal = document.getElementById('vaultModal');
-        modal.style.display = "none";
+        document.getElementById('vaultModal').style.display = "none";
         document.body.style.overflow = "auto";
-        
-        // If we close manually, we need to clear that fake history state
         if (window.history.state && window.history.state.modalOpen) {
             window.history.back();
         }
     }
 
-    // Intercept the browser back button
     window.onpopstate = function(event) {
         const modal = document.getElementById('vaultModal');
         if (modal.style.display === "flex") {
