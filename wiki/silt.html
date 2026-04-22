@@ -1,1 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBJ-081-BW | The Ledger</title>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a09;
+            --paper: #d1c7ac;
+            --accent: #941e1e;
+            --border: 1px solid #332f24;
+            --code-font: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--paper);
+            font-family: 'IM Fell English', serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .status-bar {
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 4px 0;
+        }
+
+        header {
+            padding: 40px 20px;
+            border-bottom: var(--border);
+            text-align: center;
+        }
+
+        .catalog-id {
+            font-family: var(--code-font);
+            color: var(--accent);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            border: var(--border);
+            padding: 20px;
+            background: #11110f;
+            margin: 20px 0;
+        }
+
+        .spec-item label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #6e6754;
+            letter-spacing: 1px;
+        }
+
+        .spec-item span {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .observation-box {
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            margin: 40px 0;
+            background: rgba(148, 30, 30, 0.05);
+            padding: 20px;
+        }
+
+        .observation-box h3 {
+            margin-top: 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .anatomical-note {
+            font-size: 0.9rem;
+            color: #b5af9a;
+            border: 1px dashed #444;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            .spec-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="status-bar">Classified Record // Unauthorized Access Prohibited</div>
+
+<header>
+    <span class="catalog-id">SPECIMEN ID: 081-BW</span>
+    <h1>Blackwood Silt</h1>
+    <p><i>Phylum: Unknown | Classification: Mimetic Parasite</i></p>
+</header>
+
+<div class="main-content">
+    
+    <div class="spec-grid">
+        <div class="spec-item">
+            <label>Current State</label>
+            <span>Active / Dormant (Cycling)</span>
+        </div>
+        <div class="spec-item">
+            <label>Temperature</label>
+            <span>Constant 37.0°C</span>
+        </div>
+        <div class="spec-item">
+            <label>Viscosity</label>
+            <span>1.500 cP (Variable)</span>
+        </div>
+        <div class="spec-item">
+            <label>Discovery Date</label>
+            <span>September 1892</span>
+        </div>
+    </div>
+
+    <section>
+        <h2>I. Material Description</h2>
+        <p>The Blackwood Silt is a non-Newtonian biological aggregate. While appearing as standard riverbed sediment, it possesses a cellular memory capable of replicating the structural integrity of its environment. When in proximity to human biological signatures, it transitions from a fluid state to a dense, fiber-rich solid.</p>
+    </section>
+
+    <div class="observation-box">
+        <h3>Custodian's Field Notes (2026)</h3>
+        <p>I began testing the silt's reaction to rhythmic pressure yesterday. Using techniques from my first week of massage therapy training, I applied a standard petrissage stroke to a contained sample. The silt didn't just move away—it <i>counter-pressed</i>. It felt exactly like a hypertonic trapezius muscle resisting a deep tissue release.</p>
+        
+        <div class="anatomical-note">
+            <strong>Anatomical Correlation:</strong> The silt appears to be mimicking the <i>Fascia Lata</i>. It creates a "sheath" that allows it to hold a shape without a skeletal frame, much like the compression garments used in post-surgical recovery.
+        </div>
+    </div>
+
+    <section>
+        <h2>II. The "Saturday" Event Log</h2>
+        <p>Records indicate a primary surge in activity occurs in cycles. The next projected surge aligns with the upcoming Saturday. Previous custodians noted a "searching" behavior during these windows. It is currently fixated on the massage table in the lower workshop.</p>
+    </section>
+
+</div>
+
+<footer>
+    Part of the Anatomia Archive | Custodian: A. Tyler <br>
+    Tulsa, OK | Digital Sarcophagus Protocol Active
+</footer>
+
+</body>
+</html>
 
