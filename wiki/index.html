@@ -165,14 +165,14 @@
             color: #fff;
         }
 
-        /* --- THE CRT MONITOR FOOTER --- */
+        /* --- THE FINAL CRT MONITOR FIX --- */
         .archive-footer-nav {
             margin: 60px auto 40px;
             max-width: 90%;
             width: 700px;
             background: #020502;
             border: 12px solid #1a1a17; 
-            border-radius: 35px; 
+            border-radius: 45px; /* Deeper curve for that old monitor look */
             padding: 60px 20px;
             position: relative;
             overflow: hidden;
@@ -183,14 +183,14 @@
             box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 80px rgba(0, 255, 65, 0.1);
         }
 
-        /* Scanlines and Phosphor Glow */
+        /* Scanlines Overlay */
         .archive-footer-nav::before {
             content: " ";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-            background-size: 100% 3px, 3px 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 4px 100%;
             pointer-events: none;
             z-index: 10;
         }
@@ -204,9 +204,9 @@
         .archive-count {
             font-family: 'Courier New', monospace;
             color: var(--terminal-green);
-            font-size: 1.4rem;
-            text-shadow: 0 0 10px var(--terminal-green);
-            margin-bottom: 25px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px var(--terminal-green);
+            margin-bottom: 20px;
             display: block;
             letter-spacing: 2px;
         }
@@ -219,21 +219,21 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            padding: 10px 15px;
+            padding: 12px 20px;
             transition: 0.2s;
             cursor: pointer;
             border: 1px solid transparent;
         }
 
         .command-prompt:hover {
-            background: rgba(0, 255, 65, 0.1);
+            background: rgba(0, 255, 65, 0.15);
             border: 1px solid var(--terminal-green);
             text-shadow: 0 0 15px var(--terminal-green);
         }
 
         .cursor {
             display: inline-block;
-            width: 14px;
+            width: 12px;
             height: 1.4rem;
             background-color: var(--terminal-green);
             margin-left: 10px;
@@ -245,7 +245,7 @@
             50% { opacity: 1; }
         }
 
-        /* Fast Scroll Loading State */
+        /* Fast Scroll Loading Overlay */
         #loading-overlay {
             display: none;
             position: absolute;
@@ -253,14 +253,14 @@
             background: #010501;
             color: var(--terminal-green);
             font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            padding: 20px;
+            font-size: 0.85rem;
+            padding: 30px;
             z-index: 20;
             overflow: hidden;
         }
 
         .scroll-text {
-            animation: fastScroll 0.3s linear infinite;
+            animation: fastScroll 0.4s linear infinite;
         }
 
         @keyframes fastScroll {
@@ -326,52 +326,10 @@
             <p>A maritime tracker modified to navigate bio-electric pulses.</p>
         </a>
 
-        <a href="pending.html?id=E" class="artifact-card" data-category="ritualistic">
-            <span class="catalog-no">EXHIBIT E</span>
-            <h2>The Gardener's Ledger</h2>
-            <p>Hand-penned records detailing musculoskeletal mimicry in local flora.</p>
-        </a>
-
-        <a href="pending.html?id=F" class="artifact-card" data-category="biological">
-            <span class="catalog-no">EXHIBIT F</span>
-            <h2>The Calcified Spectacles</h2>
-            <p>Lenses clouded by mineral deposits recovered from the Blackwood silt.</p>
-        </a>
-
         <a href="pending.html?id=001" class="artifact-card saturday-item" data-category="biological">
             <span class="catalog-no">ITEM 001 - FIELD LOG</span>
             <h2>The Anatomist's Bench</h2>
             <p>The Blackwood Displacement. Investigation of the human form in transit.</p>
-        </a>
-
-        <a href="pending.html?id=G" class="artifact-card" data-category="ritualistic">
-            <span class="catalog-no">EXHIBIT G</span>
-            <h2>The Ossified Music Box</h2>
-            <p>A mechanism that plays melodies audible only through bone conduction.</p>
-        </a>
-
-        <a href="pending.html?id=H" class="artifact-card" data-category="ritualistic">
-            <span class="catalog-no">EXHIBIT H</span>
-            <h2>The Weaver’s Thimble</h2>
-            <p>Used for the surgical stitching of bio-electric organic matter.</p>
-        </a>
-
-        <a href="pending.html?id=I" class="artifact-card" data-category="industrial">
-            <span class="catalog-no">EXHIBIT I</span>
-            <h2>The Surveyor’s Plumb</h2>
-            <p>A lead weight designed to measure the depth of non-physical voids.</p>
-        </a>
-
-        <a href="pending.html?id=J" class="artifact-card" data-category="industrial">
-            <span class="catalog-no">EXHIBIT J</span>
-            <h2>The Laryngoscope Lens</h2>
-            <p>Optics for viewing the internal vibrations of the vocal cords.</p>
-        </a>
-
-        <a href="pending.html?id=K" class="artifact-card" data-category="industrial">
-            <span class="catalog-no">EXHIBIT K</span>
-            <h2>The Clockmaker’s Loupe</h2>
-            <p>Precision tools for observing the mechanical gears of the human heart.</p>
         </a>
 
         <a href="pending.html?id=004" class="artifact-card saturday-item" data-category="industrial">
