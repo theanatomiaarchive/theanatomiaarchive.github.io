@@ -139,12 +139,10 @@
             let a = document.createElement('a');
             a.href = "pending.html?id=" + i;
 
-            // Logic to preserve alphabetical exhibits (1-26 = A-Z)
             if (i <= 26) {
                 const letter = String.fromCharCode(64 + i);
                 a.innerText = "EXHIBIT " + letter;
             } else {
-                // Forensic numerical exhibits for the rest
                 a.innerText = "EXHIBIT " + i;
             }
 
@@ -152,15 +150,32 @@
         }
 
         modal.style.display = "flex";
-        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+        document.body.style.overflow = "hidden";
+
+        // Push a fake state to the browser history so the back button can be intercepted
+        window.history.pushState({ modalOpen: true }, "");
     }
 
     function closeVault() {
-        document.getElementById('vaultModal').style.display = "none";
+        const modal = document.getElementById('vaultModal');
+        modal.style.display = "none";
         document.body.style.overflow = "auto";
+        
+        // If we close manually, we need to clear that fake history state
+        if (window.history.state && window.history.state.modalOpen) {
+            window.history.back();
+        }
     }
 
-    // Close modal on outside click
+    // Intercept the browser back button
+    window.onpopstate = function(event) {
+        const modal = document.getElementById('vaultModal');
+        if (modal.style.display === "flex") {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    };
+
     window.onclick = function(event) {
         if (event.target == document.getElementById('vaultModal')) {
             closeVault();
