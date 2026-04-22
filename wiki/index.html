@@ -3,182 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Unabridged Ledger | Anatomia Archive</title>
+    <title>The Anatomia Archive | Ledger Index</title>
+    <script src="../archive-lock.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --bg: #080808; 
-            --parchment: #e2d1a4; 
-            --red: #ff3333; 
-            --dim: #888273; 
-            --terminal-green: #00ff41; 
+        :root {
+            --bg-color: #0d0d0c;
+            --parchment: #e2d1a4;
+            --accent-red: #ff3333;
+            --terminal-green: #00ff41;
+            --text-main: #e0dbcd;
+            --border-style: 1px solid #4a422d;
         }
-        body { background: var(--bg); color: #b5af9a; font-family: 'IM Fell English', serif; margin: 0; overflow-x: hidden; }
-        
-        /* The Scanner Beam */
-        .scanner-line { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(255,51,51,0.2); box-shadow: 0 0 10px var(--red); z-index: 1000; pointer-events: none; animation: scan 8s linear infinite; }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
-        header { padding: 40px 20px; border-bottom: 3px double var(--red); max-width: 1200px; margin: 0 auto; }
-        h1 { font-family: 'Playfair Display', serif; color: var(--parchment); text-transform: uppercase; letter-spacing: 4px; margin: 10px 0; font-size: 1.8rem; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'IM Fell English', serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+        }
 
-        /* The Green Command Prompt */
-        .terminal-disconnect {
+        header {
+            padding: 20px 10px;
+            border-bottom: var(--border-style);
+            background: linear-gradient(to bottom, #1a1a17, #0d0d0c);
+            text-align: center;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: auto;
+            filter: drop-shadow(0 0 8px rgba(255, 51, 51, 0.4));
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin: 0;
+            color: var(--parchment);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #b5af9a;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        nav {
+            padding: 8px;
+            background: #141412;
+            border-bottom: var(--border-style);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-bar {
+            background: #000;
+            border: 1px solid #4a422d;
+            color: var(--parchment);
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'IM Fell English', serif;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .artifact-card {
+            background: #141412;
+            border: 1px solid #2e291b;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .artifact-card:hover {
+            border-color: var(--accent-red);
+            background: #1a1a17;
+            transform: translateY(-2px);
+        }
+
+        .artifact-card.saturday-item {
+            border: 1px solid #6e1a1a;
+            background: #1a0f0f;
+        }
+
+        .catalog-no {
+            font-size: 0.7rem;
+            color: var(--accent-red);
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .artifact-card h2 {
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            color: var(--parchment);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .artifact-card p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: var(--text-main);
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        .hidden { display: none; }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filters button {
+            background: #1a1a17;
+            border: 1px solid #4a422d;
+            color: var(--parchment);
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-family: 'IM Fell English', serif;
+            cursor: pointer;
+        }
+
+        /* --- THE CRT MONITOR FOOTER --- */
+        .archive-footer-nav {
+            margin: 50px auto 30px;
+            max-width: 800px;
+            background: #020502;
+            border: 12px solid #1a1a17; 
+            border-radius: 30px; 
+            padding: 40px 15px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(0,0,0,0.9), inset 0 0 60px rgba(0, 255, 65, 0.1);
+        }
+
+        .archive-footer-nav::before {
+            content: " ";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .terminal-content {
+            z-index: 5;
+            text-align: center;
+            width: 100%;
+        }
+
+        .archive-count {
+            font-family: 'Courier New', monospace;
+            color: var(--terminal-green);
+            font-size: 1.1rem; /* Sized down to match the scroll text */
+            text-shadow: 0 0 8px var(--terminal-green);
+            margin-bottom: 15px;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .command-prompt {
             color: var(--terminal-green);
             font-family: 'Courier New', monospace;
+            font-size: 1.1rem; /* Sized down to match */
+            font-weight: bold;
             text-decoration: none;
-            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
+            padding: 8px 12px;
             transition: 0.2s;
-            text-shadow: 0 0 5px rgba(0, 255, 65, 0.4);
-            letter-spacing: 1px;
-            font-weight: bold;
+            cursor: pointer;
         }
-        .mini-cursor {
+
+        .command-prompt:hover {
+            background: rgba(0, 255, 65, 0.1);
+            text-shadow: 0 0 10px var(--terminal-green);
+        }
+
+        .cursor {
             display: inline-block;
-            width: 8px;
-            height: 1rem;
+            width: 10px;
+            height: 1.1rem;
             background-color: var(--terminal-green);
             margin-left: 8px;
             animation: cursorBlink 1s step-end infinite;
         }
-        @keyframes cursorBlink { from, to { opacity: 0; } 50% { opacity: 1; } }
 
-        /* The Grid */
-        .ledger-container { max-width: 1200px; margin: 20px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        
-        .vault-block { background: #111; border: 1px solid #222; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
-        .vault-block:hover { border-color: var(--red); background: #1a0f0f; transform: translateY(-5px); }
-        .vault-block h2 { color: var(--parchment); margin: 0; font-family: 'Playfair Display', serif; font-size: 1.4rem; }
-        .vault-block span { color: var(--red); font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; }
-
-        /* THE MODAL */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #0d0d0c; border: 1px solid var(--red); width: 90%; max-width: 800px; max-height: 80vh; overflow-y: auto; padding: 40px; position: relative; box-shadow: 0 0 50px rgba(255, 51, 51, 0.1); }
-        .close-btn { position: sticky; top: 0; float: right; color: var(--red); font-size: 2rem; cursor: pointer; line-height: 1; }
-        
-        .entry-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-top: 20px; }
-        .entry-list a { color: var(--dim); text-decoration: none; font-size: 0.75rem; border: 1px solid #222; padding: 8px; text-align: center; font-family: 'Courier New', monospace; transition: 0.2s; }
-        .entry-list a:hover { color: #fff; border-color: var(--red); background: #1a0f0f; }
-
-        /* CENTERED CRT FOOTER */
-        .crt-footer {
-            margin: 60px auto;
-            max-width: 500px;
-            background: #020502;
-            border: 8px solid #1a1a17;
-            border-radius: 25px;
-            padding: 35px 15px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 40px rgba(0, 255, 65, 0.1);
+        @keyframes cursorBlink {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
         }
 
-        footer { text-align: center; padding-bottom: 60px; }
+        #loading-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #010501;
+            color: var(--terminal-green);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem; /* Matches the main terminal font size */
+            padding: 20px;
+            z-index: 20;
+            overflow: hidden;
+        }
+
+        .scroll-text {
+            animation: fastScroll 0.4s linear infinite;
+        }
+
+        @keyframes fastScroll {
+            from { transform: translateY(0); }
+            to { transform: translateY(-50%); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #5a5444;
+            font-size: 0.75rem;
+            border-top: var(--border-style);
+        }
     </style>
 </head>
 <body>
 
-<div class="scanner-line"></div>
-
 <header>
-    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 15px;">
-        <div style="color: var(--red); font-weight: bold; font-size: 0.8rem; letter-spacing: 2px;">SYSTEM ACCESS: ROOT_LEDGER</div>
-        <a href="index.html" class="terminal-disconnect">
-            ← DISCONNECT <span class="mini-cursor"></span>
-        </a>
+    <div class="brand-container">
+        <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
+        <h1>The Anatomia Archive</h1>
     </div>
-    <h1>The Unabridged Ledger</h1>
+    <span class="subtitle">Decades of Observation. A Ledger of the Unseen.</span>
 </header>
 
-<div class="ledger-container">
-    <div class="vault-block" onclick="openVault('Biological Studies', 1, 300)">
-        <span>VAULT 01</span>
-        <h2>Biological Studies</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Specimens, Bone, and Tissue</p>
+<nav>
+    <input type="text" id="searchInput" class="search-bar" placeholder="Filter the Ledger by Keyword..." onkeyup="filterArtifacts()">
+</nav>
+
+<div class="container">
+    <div class="filters">
+        <button onclick="filterCategory('all')">View All</button>
+        <button onclick="filterCategory('biological')">Bio</button>
+        <button onclick="filterCategory('industrial')">Ind</button>
+        <button onclick="filterCategory('ritualistic')">Rit</button>
     </div>
 
-    <div class="vault-block" onclick="openVault('Industrial Gear', 301, 600)">
-        <span>VAULT 02</span>
-        <h2>Industrial & Optics</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Machinery and Observation Tools</p>
-    </div>
+    <main class="artifact-grid" id="artifactGrid">
+        <a href="theater-of-rot.html" class="artifact-card" data-category="biological">
+            <span class="catalog-no">EXHIBIT A</span>
+            <h2>The Theater of Rot</h2>
+            <p>Sealed bell jar containing rapid cellular collapse.</p>
+        </a>
 
-    <div class="vault-block" onclick="openVault('Ritual Records', 601, 900)">
-        <span>VAULT 03</span>
-        <h2>Ritual & Paper</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Manuscripts and Liturgical Remains</p>
-    </div>
+        <a href="lens-of-observation.html" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">EXHIBIT B</span>
+            <h2>The Lens of Observation</h2>
+            <p>Optics tuned to lingering spiritual miasma.</p>
+        </a>
 
-    <div class="vault-block" onclick="openVault('Unclassified', 901, 1200)">
-        <span>VAULT 04</span>
-        <h2>Unclassified</h2>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Active Containment / Hazardous</p>
-    </div>
-</div>
+        <a href="voice-of-the-vines.html" class="artifact-card" data-category="biological">
+            <span class="catalog-no">EXHIBIT C</span>
+            <h2>The Voice of the Vines</h2>
+            <p>Calcified root structures with a rhythmic thrum.</p>
+        </a>
 
-<div id="vaultModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeVault()">&times;</span>
-        <h2 id="modalTitle" style="color: var(--parchment); font-family: 'Playfair Display', serif; border-bottom: 1px solid #333; padding-bottom: 10px; text-transform: uppercase;">Vault</h2>
-        <div class="entry-list" id="entryList"></div>
-    </div>
-</div>
+        <a href="anatomists-compass.html" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">EXHIBIT D</span>
+            <h2>The Anatomist's Compass</h2>
+            <p>Modified tracker for bio-electric pulses.</p>
+        </a>
 
-<div class="crt-footer">
-    <a href="index.html" class="terminal-disconnect" style="font-size: 1.2rem;">
-        $ RETURN TO MAIN_LEDGER <span class="mini-cursor"></span>
-    </a>
+        <a href="pending.html?id=E" class="artifact-card" data-category="ritualistic">
+            <span class="catalog-no">EXHIBIT E</span>
+            <h2>The Gardener's Ledger</h2>
+            <p>Records detailing musculoskeletal mimicry.</p>
+        </a>
+
+        <a href="pending.html?id=001" class="artifact-card saturday-item" data-category="biological">
+            <span class="catalog-no">ITEM 001 - FIELD LOG</span>
+            <h2>The Anatomist's Bench</h2>
+            <p>Investigation of the human form in transit.</p>
+        </a>
+
+        <a href="pending.html?id=G" class="artifact-card" data-category="ritualistic">
+            <span class="catalog-no">EXHIBIT G</span>
+            <h2>The Ossified Music Box</h2>
+            <p>Melodies audible only through bone conduction.</p>
+        </a>
+
+        <a href="pending.html?id=004" class="artifact-card saturday-item" data-category="industrial">
+            <span class="catalog-no">ITEM 004 - FIELD LOG</span>
+            <h2>The Shivering Compass</h2>
+            <p>Navigator for localized aquatic currents.</p>
+        </a>
+    </main>
+
+    <div class="archive-footer-nav">
+        <div id="loading-overlay">
+            <div class="scroll-text">
+                $ EXECUTE: ledger_unabridged.run<br>
+                [STATUS] DECRYPTING_FILES...<br>
+                [STATUS] LOADING_1213_NODES...<br>
+                [STATUS] BYPASSING_ENCRYPTION...<br>
+                [STATUS] ACCESS_GRANTED.<br>
+                $ EXECUTE: ledger_unabridged.run<br>
+                [STATUS] DECRYPTING_FILES...<br>
+                [STATUS] LOADING_1213_NODES...<br>
+            </div>
+        </div>
+
+        <div class="terminal-content">
+            <span class="archive-count" id="system-status">SYSTEM STATUS: 1,213 RECORDS DETECTED</span>
+            <div class="command-line">
+                <a href="javascript:void(0)" class="command-prompt" id="access-cmd" onclick="triggerExecute()">
+                    <span id="prompt-text">$ CLICK HERE TO ENTER ARCHIVE</span>
+                    <span class="cursor"></span>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <span style="font-style: italic; color: #ff3333; font-size: 0.8rem; letter-spacing: 1px;">
-        WARNING: All access attempts are logged. Records for authorized eyes only.
-    </span>
+    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
 </footer>
 
 <script>
-    function openVault(name, start, end) {
-        const modal = document.getElementById('vaultModal');
-        const title = document.getElementById('modalTitle');
-        const list = document.getElementById('entryList');
-        
-        title.innerText = name;
-        list.innerHTML = ""; 
+    function triggerExecute() {
+        document.getElementById('loading-overlay').style.display = 'block';
+        setTimeout(() => { window.location.href = 'ledger.html'; }, 1200); 
+    }
 
-        for (let i = start; i <= end; i++) {
-            // Logic to preserve alphabetical exhibits (1-26 = A-Z)
-            const letter = String.fromCharCode(64 + i);
-            
-            let a = document.createElement('a');
-            
-            // INJECT ANATOMIST'S BENCH BETWEEN E (5) AND F (6)
-            if (name === 'Biological Studies' && i === 6) {
-                let bench = document.createElement('a');
-                bench.href = "pending.html?id=001";
-                bench.style.borderColor = "var(--red)";
-                bench.style.color = "white";
-                bench.innerText = "ITEM 001: BENCH";
-                list.appendChild(bench);
-            }
-
-            a.href = "pending.html?id=" + (i <= 26 ? letter : i);
-            a.innerText = i <= 26 ? "EXHIBIT " + letter : "EXHIBIT " + i;
-            list.appendChild(a);
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            document.getElementById('loading-overlay').style.display = 'none';
+            const status = document.getElementById('system-status');
+            status.innerText = "SYSTEM STATUS: ACCESS LEVEL RED_UNRESTRICTED";
+            status.style.color = "white";
+            document.getElementById('prompt-text').innerText = "$ RE-ENTER ARCHIVE INTERFACE";
         }
+    });
 
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden";
+    function filterArtifacts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('artifact-card');
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].querySelector('h2').innerText.toLowerCase();
+            cards[i].classList.toggle('hidden', !title.includes(input));
+        }
     }
 
-    function closeVault() {
-        document.getElementById('vaultModal').style.display = "none";
-        document.body.style.overflow = "auto";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('vaultModal')) {
-            closeVault();
+    function filterCategory(cat) {
+        let cards = document.getElementsByClassName('artifact-card');
+        for (let i = 0; i < cards.length; i++) {
+            if (cat === 'all') { cards[i].classList.remove('hidden'); }
+            else { cards[i].classList.toggle('hidden', cards[i].dataset.category !== cat); }
         }
     }
 </script>
