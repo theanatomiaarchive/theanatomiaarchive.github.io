@@ -102,9 +102,10 @@
             display: block;
             transition: all 0.3s ease;
             position: relative;
+            opacity: 1; /* Ensured full brightness for all items */
         }
 
-        .artifact-card:hover:not(.draft) {
+        .artifact-card:hover {
             border-color: var(--accent-red);
             background: #1a1a17;
             transform: translateY(-2px);
@@ -114,11 +115,6 @@
             border: 1px solid #6e1a1a;
             background: #1a0f0f;
             box-shadow: inset 0 0 10px rgba(255, 51, 51, 0.05);
-        }
-
-        .artifact-card.draft {
-            opacity: 0.4;
-            cursor: default;
         }
 
         .catalog-no {
@@ -285,59 +281,59 @@
             <p>A maritime tracker modified to navigate bio-electric pulses.</p>
         </a>
 
-        <div class="artifact-card draft" data-category="ritualistic">
+        <a href="pending.html?id=E" class="artifact-card" data-category="ritualistic">
             <span class="catalog-no">EXHIBIT E</span>
             <h2>The Gardener's Ledger</h2>
             <p>Hand-penned records detailing musculoskeletal mimicry in local flora.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card draft" data-category="biological">
+        <a href="pending.html?id=F" class="artifact-card" data-category="biological">
             <span class="catalog-no">EXHIBIT F</span>
             <h2>The Calcified Spectacles</h2>
             <p>Lenses clouded by mineral deposits recovered from the Blackwood silt.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card saturday-item draft" data-category="biological">
+        <a href="pending.html?id=001" class="artifact-card saturday-item" data-category="biological">
             <span class="catalog-no">ITEM 001 - FIELD LOG</span>
             <h2>The Anatomist's Bench</h2>
             <p>The Blackwood Displacement. Investigation of the human form in transit.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card draft" data-category="ritualistic">
+        <a href="pending.html?id=G" class="artifact-card" data-category="ritualistic">
             <span class="catalog-no">EXHIBIT G</span>
             <h2>The Ossified Music Box</h2>
             <p>A mechanism that plays melodies audible only through bone conduction.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card draft" data-category="ritualistic">
+        <a href="pending.html?id=H" class="artifact-card" data-category="ritualistic">
             <span class="catalog-no">EXHIBIT H</span>
             <h2>The Weaver’s Thimble</h2>
             <p>Used for the surgical stitching of bio-electric organic matter.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card draft" data-category="industrial">
+        <a href="pending.html?id=I" class="artifact-card" data-category="industrial">
             <span class="catalog-no">EXHIBIT I</span>
             <h2>The Surveyor’s Plumb</h2>
             <p>A lead weight designed to measure the depth of non-physical voids.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card draft" data-category="industrial">
+        <a href="pending.html?id=J" class="artifact-card" data-category="industrial">
             <span class="catalog-no">EXHIBIT J</span>
             <h2>The Laryngoscope Lens</h2>
             <p>Optics for viewing the internal vibrations of the vocal cords.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card draft" data-category="industrial">
+        <a href="pending.html?id=K" class="artifact-card" data-category="industrial">
             <span class="catalog-no">EXHIBIT K</span>
             <h2>The Clockmaker’s Loupe</h2>
             <p>Precision tools for observing the mechanical gears of the human heart.</p>
-        </div>
+        </a>
 
-        <div class="artifact-card saturday-item draft" data-category="industrial">
+        <a href="pending.html?id=004" class="artifact-card saturday-item" data-category="industrial">
             <span class="catalog-no">ITEM 004 - FIELD LOG</span>
             <h2>The Shivering Compass</h2>
             <p>The Tide Beneath the Floorboards. A navigator for localized aquatic currents.</p>
-        </div>
+        </a>
 
     </main>
 
