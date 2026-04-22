@@ -11,18 +11,18 @@
             --parchment: #e2d1a4; 
             --red: #ff3333; 
             --dim: #888273; 
-            --terminal-green: #00ff41; /* The Phosphor Green */
+            --terminal-green: #00ff41; 
         }
-        body { background: var(--bg); color: #b5af9a; font-family: 'IM Fell English', serif; margin: 0; }
+        body { background: var(--bg); color: #b5af9a; font-family: 'IM Fell English', serif; margin: 0; overflow-x: hidden; }
         
         /* The Scanner Beam */
         .scanner-line { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(255,51,51,0.2); box-shadow: 0 0 10px var(--red); z-index: 1000; pointer-events: none; animation: scan 8s linear infinite; }
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
         header { padding: 40px 20px; border-bottom: 3px double var(--red); max-width: 1200px; margin: 0 auto; }
-        h1 { font-family: 'Playfair Display', serif; color: var(--parchment); text-transform: uppercase; letter-spacing: 4px; margin: 10px 0; }
+        h1 { font-family: 'Playfair Display', serif; color: var(--parchment); text-transform: uppercase; letter-spacing: 4px; margin: 10px 0; font-size: 1.8rem; }
 
-        /* --- THE GREEN COMMAND PROMPT --- */
+        /* The Green Command Prompt */
         .terminal-disconnect {
             color: var(--terminal-green);
             font-family: 'Courier New', monospace;
@@ -52,21 +52,21 @@
         /* The Grid */
         .ledger-container { max-width: 1200px; margin: 20px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         
-        .vault-block { background: #111; border: 1px solid #222; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .vault-block { background: #111; border: 1px solid #222; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
         .vault-block:hover { border-color: var(--red); background: #1a0f0f; transform: translateY(-5px); }
-        .vault-block h2 { color: var(--parchment); margin: 0; font-family: 'Playfair Display', serif; }
-        .vault-block span { color: var(--red); font-size: 0.8rem; letter-spacing: 2px; }
+        .vault-block h2 { color: var(--parchment); margin: 0; font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+        .vault-block span { color: var(--red); font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; }
 
-        /* THE MODAL (Hovering Box) */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #0d0d0c; border: 1px solid var(--red); width: 90%; max-width: 800px; max-height: 80vh; overflow-y: auto; padding: 40px; position: relative; }
-        .close-btn { position: sticky; top: 0; float: right; color: var(--red); font-size: 1.5rem; cursor: pointer; }
+        /* THE MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #0d0d0c; border: 1px solid var(--red); width: 90%; max-width: 800px; max-height: 80vh; overflow-y: auto; padding: 40px; position: relative; box-shadow: 0 0 50px rgba(255, 51, 51, 0.1); }
+        .close-btn { position: sticky; top: 0; float: right; color: var(--red); font-size: 2rem; cursor: pointer; line-height: 1; }
         
-        .entry-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 20px; }
-        .entry-list a { color: var(--dim); text-decoration: none; font-size: 0.8rem; border: 1px solid #222; padding: 5px; text-align: center; }
-        .entry-list a:hover { color: #fff; border-color: var(--red); background: #111; }
+        .entry-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-top: 20px; }
+        .entry-list a { color: var(--dim); text-decoration: none; font-size: 0.75rem; border: 1px solid #222; padding: 8px; text-align: center; font-family: 'Courier New', monospace; transition: 0.2s; }
+        .entry-list a:hover { color: #fff; border-color: var(--red); background: #1a0f0f; }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid #222; }
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid #222; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -74,7 +74,7 @@
 <div class="scanner-line"></div>
 
 <header>
-    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 15px;">
         <div style="color: var(--red); font-weight: bold; font-size: 0.8rem; letter-spacing: 2px;">SYSTEM ACCESS: ROOT_LEDGER</div>
         <a href="index.html" class="terminal-disconnect">
             ← DISCONNECT <span class="mini-cursor"></span>
@@ -112,9 +112,8 @@
 <div id="vaultModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeVault()">&times;</span>
-        <h2 id="modalTitle" style="color: var(--parchment); font-family: 'Playfair Display', serif; border-bottom: 1px solid #333; padding-bottom: 10px;">Vault</h2>
-        <div class="entry-list" id="entryList">
-            </div>
+        <h2 id="modalTitle" style="color: var(--parchment); font-family: 'Playfair Display', serif; border-bottom: 1px solid #333; padding-bottom: 10px; text-transform: uppercase;">Vault</h2>
+        <div class="entry-list" id="entryList"></div>
     </div>
 </div>
 
@@ -122,7 +121,9 @@
     <a href="index.html" class="terminal-disconnect" style="font-size: 1.1rem;">
         ← RETURN TO MAIN LEDGER <span class="mini-cursor"></span>
     </a><br><br>
-    <span style="font-style: italic; color: #ff3333;">Records are for authorized eyes only.</span>
+    <span style="font-style: italic; color: #ff3333; font-size: 0.8rem; letter-spacing: 1px;">
+        WARNING: All access attempts are logged. Records for authorized eyes only.
+    </span>
 </footer>
 
 <script>
@@ -137,17 +138,29 @@
         for (let i = start; i <= end; i++) {
             let a = document.createElement('a');
             a.href = "pending.html?id=" + i;
-            a.innerText = "EXHIBIT " + i;
+
+            // Logic to preserve alphabetical exhibits (1-26 = A-Z)
+            if (i <= 26) {
+                const letter = String.fromCharCode(64 + i);
+                a.innerText = "EXHIBIT " + letter;
+            } else {
+                // Forensic numerical exhibits for the rest
+                a.innerText = "EXHIBIT " + i;
+            }
+
             list.appendChild(a);
         }
 
         modal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
     }
 
     function closeVault() {
         document.getElementById('vaultModal').style.display = "none";
+        document.body.style.overflow = "auto";
     }
 
+    // Close modal on outside click
     window.onclick = function(event) {
         if (event.target == document.getElementById('vaultModal')) {
             closeVault();
