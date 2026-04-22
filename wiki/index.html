@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,11 +131,22 @@
             margin-top: 15px;
         }
 
+        .artifact-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         .artifact-card {
             background: #141412;
             border: 1px solid #2e291b;
             padding: 15px;
             position: relative;
+            transition: border-color 0.3s;
+        }
+
+        .artifact-card:hover {
+            border-color: var(--accent-red);
         }
 
         .artifact-card.hidden { display: none; }
@@ -147,6 +157,14 @@
             font-weight: bold;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+        }
+
+        .record-prompt {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: var(--accent-red);
+            text-align: right;
+            letter-spacing: 1px;
         }
 
         h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 4px 0; color: var(--parchment); }
@@ -195,7 +213,7 @@
 
 <div class="container">
     <aside class="sidebar">
-        <h3>Classifications</h3>
+        <h3>Catalog Classifications</h3>
         <ul>
             <li><button onclick="filterCategory('all')">All Entries</button></li>
             <li><button onclick="filterCategory('biological')">Biological Oddities</button></li>
@@ -211,16 +229,20 @@
     </aside>
 
     <main class="artifact-grid" id="artifactGrid">
+        
+        <a href="silt.html" class="artifact-link">
+            <div class="artifact-card" data-category="ritual">
+                <span class="catalog-no">OBJ ID: 081-BW</span>
+                <h2>Blackwood Silt</h2>
+                <p>Recovered from the Blackwood Basin. Maintains a localized constant of 37°C regardless of environment.</p>
+                <div class="record-prompt">OPEN FULL RECORD →</div>
+            </div>
+        </a>
+
         <div class="artifact-card" data-category="biological">
             <span class="catalog-no">OBJ ID: 001-CS</span>
             <h2>The Calcified Sigh</h2>
             <p>A human lung turned to solid alabaster. It is said to weigh more during a full moon.</p>
-        </div>
-
-        <div class="artifact-card" data-category="ritual">
-            <span class="catalog-no">OBJ ID: 081-BW</span>
-            <h2>Silt-Covered Boot</h2>
-            <p>Recovered from the Blackwood Basin. The internal temperature remains a constant 37°C.</p>
         </div>
 
         <div class="artifact-card" data-category="industrial">
@@ -228,6 +250,7 @@
             <h2>The Brass Lung</h2>
             <p>A mechanical bellows device used in early attempts to filter spiritual miasma from the air.</p>
         </div>
+
     </main>
 </div>
 
@@ -240,16 +263,36 @@
     function filterArtifacts() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.getElementsByClassName('artifact-card');
+        let links = document.getElementsByClassName('artifact-link');
+        
+        // Handle cards that are inside links
+        for (let i = 0; i < links.length; i++) {
+            let title = links[i].querySelector('h2').innerText.toLowerCase();
+            links[i].style.display = title.includes(input) ? "block" : "none";
+        }
+        
+        // Handle standalone cards
         for (let i = 0; i < cards.length; i++) {
-            let title = cards[i].querySelector('h2').innerText.toLowerCase();
-            cards[i].classList.toggle('hidden', !title.includes(input));
+            if (!cards[i].parentElement.classList.contains('artifact-link')) {
+                let title = cards[i].querySelector('h2').innerText.toLowerCase();
+                cards[i].classList.toggle('hidden', !title.includes(input));
+            }
         }
     }
 
     function filterCategory(cat) {
         let cards = document.getElementsByClassName('artifact-card');
+        let links = document.getElementsByClassName('artifact-link');
+
+        for (let i = 0; i < links.length; i++) {
+            let card = links[i].querySelector('.artifact-card');
+            links[i].style.display = (cat === 'all' || card.dataset.category === cat) ? "block" : "none";
+        }
+
         for (let i = 0; i < cards.length; i++) {
-            cards[i].classList.toggle('hidden', cat !== 'all' && cards[i].dataset.category !== cat);
+            if (!cards[i].parentElement.classList.contains('artifact-link')) {
+                cards[i].classList.toggle('hidden', cat !== 'all' && cards[i].dataset.category !== cat);
+            }
         }
     }
 </script>
