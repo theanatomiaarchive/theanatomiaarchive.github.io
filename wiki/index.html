@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Anatomia Archive | Index</title>
+    <script src="../archive-lock.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -127,6 +128,8 @@
             background: #141412;
             border: 1px solid #2e291b;
             padding: 15px;
+            text-decoration: none; /* For the link */
+            display: block; /* For the link */
         }
 
         .artifact-card.hidden { display: none; }
@@ -172,7 +175,7 @@
 
 <header>
     <div class="brand-container">
-        <img src="Logopit_1776777067963.png" alt="Logo" class="logo-img">
+        <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
         <h1>The Anatomia Archive</h1>
     </div>
     <span class="subtitle">A Comprehensive Catalog of the Obscure, the Occult, and the Forgotten</span>
@@ -194,7 +197,7 @@
 
         <h3>Researcher Logs</h3>
         <ul>
-            <li><a href="#">The Silt Expedition</a></li>
+            <li><a href="silt.html">The Silt Expedition</a></li>
             <li><a href="#">Masqueraide Protocols</a></li>
         </ul>
     </aside>
@@ -206,11 +209,11 @@
             <p>A human lung turned to solid alabaster. It is said to weigh more during a full moon.</p>
         </div>
 
-        <div class="artifact-card" data-category="ritual">
+        <a href="silt.html" class="artifact-card" data-category="ritual">
             <span class="catalog-no">OBJ ID: 081-BW</span>
             <h2>Silt-Covered Boot</h2>
             <p>Recovered from the Blackwood Silt. The mud remains wet regardless of ambient temperature.</p>
-        </div>
+        </a>
 
         <div class="artifact-card" data-category="industrial">
             <span class="catalog-no">OBJ ID: 052-IND</span>
