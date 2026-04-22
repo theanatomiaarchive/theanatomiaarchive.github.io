@@ -11,14 +11,14 @@
         :root {
             --bg-color: #0d0d0c;
             --parchment: #e2d1a4;
-            --accent-red: #ff3333; /* Our New Brighter Crimson */
-            --gold-dim: #4a422d;
-            --text-main: #e0dbcd;
+            --accent-red: #ff3333; 
+            --gold-muted: #4a422d;
+            --text-gray: #888;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--parchment);
             font-family: 'IM Fell English', serif;
             margin: 0;
             display: flex;
@@ -26,123 +26,146 @@
             padding: 20px;
         }
 
-        .ledger-container {
-            max-width: 600px;
+        .museum-container {
+            max-width: 500px;
             width: 100%;
             text-align: center;
         }
 
-        /* The Circular Emblem Header */
-        .emblem {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 15px;
+        .logo-circle {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
             background: url('../Logopit_1776777067963.png') no-repeat center;
             background-size: contain;
-            border: 1px solid var(--gold-dim);
-            border-radius: 50%;
-            padding: 5px;
         }
 
         h1 {
-            color: var(--parchment);
             font-family: 'Playfair Display', serif;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin: 0;
-            font-size: 1.8rem;
+            letter-spacing: 5px;
+            font-size: 2rem;
+            margin: 10px 0 5px;
         }
 
-        .subtitle {
+        .tagline {
             font-style: italic;
-            color: var(--gold-dim);
-            font-size: 0.9rem;
-            margin-bottom: 30px;
+            color: var(--gold-muted);
+            font-size: 0.8rem;
+            margin-bottom: 25px;
         }
 
-        /* The Gold Grid Sections */
-        .section-label {
-            color: var(--parchment);
+        /* Search Bar Styling */
+        .search-box {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--gold-muted);
+            color: var(--text-gray);
+            padding: 10px;
+            font-family: inherit;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        /* Classification Buttons */
+        .label-heading {
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 0.8rem;
-            margin: 20px 0 10px;
-            border-bottom: 1px solid var(--gold-dim);
-            display: inline-block;
-            padding: 0 20px 5px;
+            color: var(--parchment);
+            margin: 20px 0 15px;
         }
 
-        /* Specimen Entry Cards */
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--gold-muted);
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            background: none;
+        }
+
+        /* The Cards */
         .specimen-card {
-            border: 1px solid var(--gold-dim);
-            background: rgba(26, 26, 23, 0.5);
-            margin-bottom: 15px;
+            border: 1px solid var(--gold-muted);
             padding: 20px;
             text-align: left;
+            margin-bottom: 15px;
             text-decoration: none;
             display: block;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .specimen-card:hover {
             border-color: var(--accent-red);
-            background: rgba(255, 51, 51, 0.05);
+            background: rgba(255, 51, 51, 0.03);
         }
 
         .obj-id {
             color: var(--accent-red);
-            font-family: 'Courier New', monospace;
+            font-family: monospace;
             font-size: 0.7rem;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
 
-        .specimen-name {
-            color: var(--parchment);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+        .card-title {
+            font-size: 1.5rem;
             margin: 5px 0;
+            color: var(--parchment);
         }
 
-        .specimen-desc {
-            color: #888;
+        .card-desc {
+            color: var(--text-gray);
             font-size: 0.9rem;
             line-height: 1.4;
         }
 
         footer {
-            margin-top: 50px;
-            color: #333;
+            margin-top: 60px;
+            color: #222;
             font-size: 0.7rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="ledger-container">
-        <div class="emblem"></div>
+    <div class="museum-container">
+        <div class="logo-circle"></div>
         <h1>The Ledger</h1>
-        <div class="subtitle">A Curated Record of the Anatomia Archive | Est. 1892</div>
+        <div class="tagline">A Curated Record of the Anatomia Archive | Est. 1892</div>
 
-        <div class="section-label">Field Reports</div>
+        <div class="search-box">Search the Ledger Records...</div>
 
-        <div class="specimen-list">
-            <a href="silt.html" class="specimen-card">
-                <div class="obj-id">OBJ ID: 081-BW</div>
-                <div class="specimen-name">Blackwood Silt</div>
-                <div class="specimen-desc">Recovered from the Blackwood Basin. Displays advanced musculoskeletal mimicry and hypertonic resistance.</div>
-            </a>
-
-            <div class="specimen-card" style="opacity: 0.5; border-style: dashed;">
-                <div class="obj-id">OBJ ID: ???</div>
-                <div class="specimen-name">Pending Entry...</div>
-                <div class="specimen-desc">The human form on the massage table. Observation scheduled for April 25th.</div>
-            </div>
+        <div class="label-heading">Classifications</div>
+        <div class="filter-group">
+            <div class="filter-btn">All Entries</div>
+            <div class="filter-btn">Biological Oddities</div>
+            <div class="filter-btn">Industrial Horrors</div>
+            <div class="filter-btn">Remnants of Silt</div>
         </div>
 
-        <footer>
-            © 1894 The Anatomia Archive // All Rights Reserved
-        </footer>
+        <div class="label-heading">Field Reports</div>
+        
+        <a href="silt.html" class="specimen-card">
+            <div class="obj-id">OBJ ID: 081-BW</div>
+            <div class="card-title">Blackwood Silt</div>
+            <div class="card-desc">Recovered from the Blackwood Basin. Displays advanced musculoskeletal mimicry and hypertonic resistance.</div>
+        </a>
+
+        <div class="specimen-card" style="opacity: 0.4; border-style: dotted;">
+            <div class="obj-id">OBJ ID: ???</div>
+            <div class="card-title">Pending Entry...</div>
+            <div class="card-desc">The human form on the massage table. Observation scheduled for April 25th.</div>
+        </div>
+
+        <footer>© 1894 The Anatomia Archive // All Rights Reserved</footer>
     </div>
 
 </body>
