@@ -1,1 +1,33 @@
+CUSTODIAN’S MANUAL: PROTOCOL OMEGA
+​WHEN TO USE: Use this only when you are ready to "fictionalize" the end of the Archive or if you are stepping away permanently.
+​HOW TO INSTALL:
+​Open the page you want to close (like index.html or silt.html).
+​Scroll to the very bottom of the code.
+​Find the <footer> tag (it's usually near the very end).
+​Paste the code below DIRECTLY ABOVE that <footer> tag.
+​In the code, find [INSERT DATE] and type in the current date.
+​Save/Commit the file.
+--------------------------------------------
 
+<div style="margin-top: 80px; border-top: 2px solid #1a1a17; padding-top: 30px; border-bottom: 2px solid #1a1a17; padding-bottom: 30px; background: rgba(10, 10, 9, 0.8);">
+    
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #444; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">
+        System Status: Archive Locked // Last Verified Custodian Signal: [INSERT DATE]
+    </div>
+    
+    <h4 style="font-family: 'Playfair Display', serif; color: #ff3333; font-style: italic; margin: 0 0 10px 0; font-size: 1.2rem; letter-spacing: 1px;">
+        Notice to Field Correspondents:
+    </h4>
+    
+    <p style="font-size: 0.9rem; color: #888; line-height: 1.6; margin: 0; font-family: 'IM Fell English', serif;">
+        The External Submission Portal is now <strong>DECOMMISSIONED</strong>. Due to an indefinite lapse in Custodian vetting and manual verification protocols, no further field reports can be committed to the permanent record. 
+    </p>
+    
+    <p style="font-size: 0.8rem; color: #555; margin-top: 15px; font-style: italic; font-family: 'IM Fell English', serif;">
+        This Ledger is now classified as a Closed Specimen History. Information contained herein is preserved for historical reference only. Proceed with extreme caution; the Silt does not require a Custodian to remain active.
+    </p>
+
+    <div style="margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #222; text-align: center; letter-spacing: 4px;">
+        DIGITAL SARCOPHAGUS PROTOCOL: SEALED
+    </div>
+</div>
