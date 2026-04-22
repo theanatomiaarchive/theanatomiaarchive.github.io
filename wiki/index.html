@@ -25,8 +25,9 @@
             line-height: 1.4;
         }
 
+        /* --- FIXED HEADER LAYOUT --- */
         header {
-            padding: 30px 20px;
+            padding: 20px;
             border-bottom: var(--border-style);
             background: linear-gradient(to bottom, #1a1a17, #0d0d0c);
         }
@@ -34,43 +35,63 @@
         .brand-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
+            display: grid;
+            grid-template-columns: auto 1fr auto; /* Logo | Title | Status */
             align-items: center;
-            justify-content: space-between;
             gap: 20px;
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
         .logo-img {
-            width: 55px;
+            width: 60px;
             height: auto;
             filter: drop-shadow(0 0 8px rgba(255, 51, 51, 0.5));
         }
 
+        .title-block {
+            text-align: center;
+        }
+
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin: 0;
             color: var(--parchment);
             text-transform: uppercase;
             letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #b5af9a;
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 5px;
         }
 
         .system-status-header {
             color: var(--accent-red); 
             font-weight: bold; 
-            font-size: 0.7rem; 
+            font-size: 0.65rem; 
             letter-spacing: 2px;
             text-transform: uppercase;
             border: 1px solid rgba(255, 51, 51, 0.3);
-            padding: 5px 10px;
+            padding: 8px 12px;
+            white-space: nowrap;
+            font-family: monospace;
         }
 
+        /* Responsive Header Fix */
+        @media (max-width: 768px) {
+            .brand-container {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                gap: 10px;
+            }
+            .system-status-header { order: -1; } /* Puts status at very top on mobile */
+        }
+
+        /* --- STICKY NAV & FILTERS --- */
         nav {
             padding: 10px;
             background: #141412;
@@ -94,16 +115,12 @@
             font-size: 1rem;
         }
 
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { padding: 20px; max-width: 1200px; margin: 0 auto; }
 
         .filters {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin: 30px 0;
             flex-wrap: wrap;
         }
@@ -112,7 +129,7 @@
             background: #1a1a17;
             border: 1px solid #4a422d;
             color: var(--parchment);
-            padding: 8px 16px;
+            padding: 8px 20px;
             font-family: 'IM Fell English', serif;
             cursor: pointer;
             transition: 0.2s;
@@ -122,10 +139,10 @@
 
         .filters button:hover {
             border-color: var(--accent-red);
-            background: rgba(255, 51, 51, 0.05);
-            color: #fff;
+            background: rgba(255, 51, 51, 0.1);
         }
 
+        /* --- ARTIFACT GRID --- */
         .artifact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -144,21 +161,22 @@
         .artifact-card:hover {
             border-color: var(--accent-red);
             background: #1a1a17;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .artifact-card.saturday-item {
             border: 1px solid #6e1a1a;
             background: #1a0f0f;
-            box-shadow: inset 0 0 15px rgba(255, 51, 51, 0.05);
+            box-shadow: inset 0 0 20px rgba(255, 51, 51, 0.1);
         }
 
         .catalog-no {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--accent-red);
             font-weight: bold;
             display: block;
             margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .artifact-card h2 {
@@ -177,91 +195,64 @@
 
         .hidden { display: none; }
 
-        /* --- THE FIXED CRT MONITOR --- */
+        /* --- CRT MONITOR FOOTER --- */
         .archive-footer-nav {
             margin: 80px auto 40px;
             width: 95%;
-            max-width: 650px;
+            max-width: 600px;
             aspect-ratio: 16 / 10;
             background: #020502;
-            border: 12px solid #1a1a17; 
-            border-radius: 45px; 
+            border: 15px solid #1a1a17; 
+            border-radius: 40px; 
             position: relative;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
             align-items: center; 
             justify-content: center;
-            box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 80px rgba(0, 255, 65, 0.15);
+            box-shadow: 0 0 60px rgba(0,0,0,0.9), inset 0 0 100px rgba(0, 255, 65, 0.1);
         }
 
         .archive-footer-nav::before {
-            content: " ";
+            content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-            background-size: 100% 4px, 4px 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
             pointer-events: none;
             z-index: 10;
-            animation: monitorFlicker 0.2s infinite;
         }
 
-        @keyframes monitorFlicker { 0% { opacity: 0.98; } 100% { opacity: 1; } }
-
-        .terminal-content { z-index: 5; text-align: center; width: 100%; padding: 20px; }
+        .terminal-content { z-index: 5; text-align: center; }
 
         .archive-count {
-            font-family: 'Courier New', monospace;
+            font-family: monospace;
             color: var(--terminal-green);
-            font-size: clamp(0.9rem, 4vw, 1.3rem);
+            font-size: 1.2rem;
             text-shadow: 0 0 10px var(--terminal-green);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: block;
-            letter-spacing: 2px;
         }
 
         .command-prompt {
             color: var(--terminal-green);
-            font-family: 'Courier New', monospace;
-            font-size: clamp(1rem, 5vw, 1.4rem);
+            font-family: monospace;
+            font-size: 1.3rem;
             font-weight: bold;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
+            border: 1px solid var(--terminal-green);
+            padding: 10px 20px;
+            transition: 0.3s;
         }
 
-        .cursor {
-            display: inline-block;
-            width: 14px;
-            height: 1.4rem;
-            background-color: var(--terminal-green);
-            margin-left: 10px;
-            animation: cursorBlink 1s step-end infinite;
+        .command-prompt:hover {
+            background: rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 20px var(--terminal-green);
         }
-
-        @keyframes cursorBlink { from, to { opacity: 0; } 50% { opacity: 1; } }
-
-        #loading-overlay {
-            display: none;
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #010501;
-            color: var(--terminal-green);
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            padding: 30px;
-            z-index: 20;
-            overflow: hidden;
-        }
-
-        .scroll-text { animation: fastScroll 0.4s linear infinite; }
-        @keyframes fastScroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 
         footer {
             text-align: center;
-            padding: 60px 40px;
+            padding: 60px;
             color: #5a5444;
             font-size: 0.8rem;
             border-top: var(--border-style);
@@ -272,11 +263,12 @@
 
 <header>
     <div class="brand-container">
-        <div class="header-left">
-            <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
+        <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
+        <div class="title-block">
             <h1>The Anatomia Archive</h1>
+            <span class="subtitle">Decades of Observation. A Ledger of the Unseen.</span>
         </div>
-        <div class="system-status-header">ARCHIVE_ACCESS: GRANTED</div>
+        <div class="system-status-header">SYSTEM_ACCESS: GRANTED</div>
     </div>
 </header>
 
@@ -364,36 +356,21 @@
     </main>
 
     <div class="archive-footer-nav">
-        <div id="loading-overlay">
-            <div class="scroll-text">
-                $ EXECUTE: ledger_unabridged.run<br>
-                [STATUS] DECRYPTING_FILES...<br>
-                [STATUS] LOADING_1213_NODES...<br>
-                [STATUS] ACCESS_GRANTED.<br>
-            </div>
-        </div>
         <div class="terminal-content">
-            <span class="archive-count">SYSTEM STATUS: 1,213 RECORDS FOUND</span>
-            <div class="command-line">
-                <a href="javascript:void(0)" class="command-prompt" onclick="triggerExecute()">
-                    $ CLICK HERE TO ENTER ARCHIVE
-                    <span class="cursor"></span>
-                </a>
-            </div>
+            <span class="archive-count">STATUS: 1,213 RECORDS</span>
+            <a href="javascript:void(0)" class="command-prompt" onclick="window.location.href='ledger.html'">
+                $ ENTER ARCHIVE
+            </a>
         </div>
     </div>
 </div>
 
 <footer>
-    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
+    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.<br>
+    <em>Some things are better left uncataloged.</em>
 </footer>
 
 <script>
-    function triggerExecute() {
-        document.getElementById('loading-overlay').style.display = 'block';
-        setTimeout(() => { window.location.href = 'ledger.html'; }, 1200); 
-    }
-
     function filterArtifacts() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.getElementsByClassName('artifact-card');
