@@ -9,7 +9,8 @@
         :root {
             --bg: #0a0a09;
             --paper: #d1c7ac;
-            --accent: #941e1e;
+            --accent: #c21d1d; /* Brighter Crimson */
+            --bright-red: #ff3333;
             --border: 1px solid #332f24;
             --code-font: 'JetBrains Mono', monospace;
         }
@@ -29,14 +30,15 @@
             text-align: center;
             letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 4px 0;
+            padding: 5px 0;
+            font-weight: bold;
         }
 
         .nav-back { padding: 15px; }
         .nav-back a { color: var(--paper); text-decoration: none; font-size: 0.8rem; opacity: 0.7; }
 
         header { padding: 20px 20px 40px; border-bottom: var(--border); text-align: center; }
-        .catalog-id { font-family: var(--code-font); color: var(--accent); font-size: 1.1rem; display: block; }
+        .catalog-id { font-family: var(--code-font); color: var(--bright-red); font-size: 1.1rem; display: block; }
         h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 10px 0 0; text-transform: uppercase; }
 
         .main-content { max-width: 850px; margin: 0 auto; padding: 20px; }
@@ -54,7 +56,6 @@
         .spec-item label { display: block; font-size: 0.7rem; text-transform: uppercase; color: #6e6754; }
         .spec-item span { font-size: 1.1rem; color: #fff; }
 
-        /* THE DIVIDER */
         .archive-divider {
             border: none;
             border-top: 3px double #332f24;
@@ -71,11 +72,10 @@
             padding: 0 15px;
             font-family: var(--code-font);
             font-size: 0.7rem;
-            color: var(--accent);
+            color: var(--bright-red);
             letter-spacing: 2px;
         }
 
-        /* LOG SECTION STYLING */
         .log-container { margin-bottom: 80px; }
 
         .log-entry {
@@ -105,22 +105,25 @@
 
         .anatomical-tag {
             display: inline-block;
-            background: rgba(148, 30, 30, 0.1);
-            color: var(--accent);
+            background: rgba(194, 29, 29, 0.1);
+            color: #ff4d4d;
             padding: 2px 8px;
             font-size: 0.75rem;
             margin-top: 10px;
-            border: 1px solid rgba(148, 30, 30, 0.3);
+            border: 1px solid rgba(194, 29, 29, 0.4);
+            font-family: var(--code-font);
         }
 
         .timestamp-box {
-            background: #1a1a17;
-            color: var(--accent);
+            background: #110000;
+            color: var(--bright-red);
             font-family: var(--code-font);
-            padding: 10px;
-            border: 1px solid var(--accent);
+            padding: 15px;
+            border: 1px solid var(--bright-red);
             text-align: center;
             margin: 20px 0;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
         }
 
         footer { text-align: center; padding: 60px; font-size: 0.8rem; opacity: 0.5; border-top: var(--border); }
