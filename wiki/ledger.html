@@ -21,65 +21,55 @@
             font-family: 'IM Fell English', serif;
             margin: 0;
             padding: 0;
-            line-height: 1.4;
         }
 
+        /* --- TIGHTENED HEADER --- */
         header {
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-bottom: var(--border-style);
-            background: linear-gradient(to bottom, #1a1a17, #0d0d0c);
-            text-align: right; /* Aligns header content to the right */
+            background: #141412;
         }
 
         .system-status-label {
             color: var(--accent-red);
             font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             letter-spacing: 2px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem; /* Sized down from 2.2rem */
             margin: 0;
             color: var(--parchment);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
-        /* --- TERMINAL DISCONNECT LINK --- */
         .disconnect-link {
             color: var(--terminal-green);
             font-family: 'Courier New', monospace;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 0.9rem; /* Sized down to match footer terminal */
             display: inline-flex;
             align-items: center;
-            margin-top: 15px;
-            transition: all 0.2s ease;
-            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-            cursor: pointer;
+            margin-top: 12px;
+            transition: 0.2s;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.4);
         }
 
         .disconnect-link:hover {
-            text-shadow: 0 0 12px var(--terminal-green);
-            filter: brightness(1.2);
-        }
-
-        .terminal-arrow {
-            margin-right: 10px;
-            font-weight: bold;
+            text-shadow: 0 0 10px var(--terminal-green);
         }
 
         .mini-cursor {
             display: inline-block;
-            width: 10px;
-            height: 1.1rem;
+            width: 8px;
+            height: 1rem;
             background-color: var(--terminal-green);
-            margin-left: 8px;
-            vertical-align: middle;
+            margin-left: 6px;
             animation: cursorBlink 1s step-end infinite;
         }
 
@@ -89,78 +79,86 @@
         }
 
         .container {
-            padding: 40px 20px;
-            max-width: 1200px;
+            padding: 20px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        /* --- ARTIFACT VAULT BOXES --- */
+        /* --- BENTO GRID SYSTEM --- */
         .ledger-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 20px;
         }
 
         .vault-entry {
-            background: #141412;
+            background: #11110f;
             border: 1px solid #2e291b;
-            padding: 30px;
+            padding: 20px;
             position: relative;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            transition: border 0.3s;
+        }
+
+        .vault-entry:hover {
+            border-color: #4a422d;
         }
 
         .vault-header {
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #3d3623;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            align-items: baseline;
+            border-bottom: 1px solid #2e291b;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
         }
 
         .entry-id {
             color: var(--accent-red);
             font-family: 'Courier New', monospace;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .entry-date {
-            color: #7a7361;
-            font-size: 0.85rem;
+            color: #666;
+            font-size: 0.75rem;
             font-style: italic;
         }
 
         .vault-entry h2 {
             font-family: 'Playfair Display', serif;
             color: var(--parchment);
-            margin: 0 0 15px 0;
-            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            font-size: 1.4rem; /* Scaled down for mobile bento feel */
         }
 
         .vault-entry p {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            margin-bottom: 20px;
+            font-size: 0.95rem; /* Sized down for "data" look */
+            color: #b5af9a;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
         .metadata-tags {
             display: flex;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .tag {
-            font-size: 0.75rem;
-            border: 1px solid #4a422d;
-            padding: 4px 10px;
-            color: #b5af9a;
+            font-size: 0.7rem;
+            border: 1px solid #3d3623;
+            padding: 3px 8px;
+            color: #888;
             text-transform: uppercase;
+            font-family: 'Courier New', monospace;
         }
 
         footer {
             text-align: center;
-            padding: 60px;
-            color: #5a5444;
-            font-size: 0.8rem;
+            padding: 40px 20px;
+            color: #444;
+            font-size: 0.75rem;
             border-top: var(--border-style);
         }
     </style>
@@ -172,21 +170,21 @@
     <h1>The Unabridged Ledger</h1>
     
     <a href="index.html" class="disconnect-link">
-        <span class="terminal-arrow">←</span> DISCONNECT
+        <span style="margin-right:8px;">←</span> DISCONNECT
         <span class="mini-cursor"></span>
     </a>
 </header>
 
 <div class="container">
-    <div class="ledger-grid">
+    <main class="ledger-grid">
         
         <article class="vault-entry">
             <div class="vault-header">
                 <span class="entry-id">FILE_REF: ARCHIVE-001</span>
-                <span class="entry-date">Circa November 1892</span>
+                <span class="entry-date">Nov 1892</span>
             </div>
             <h2>The Anatomist's Bench</h2>
-            <p>Preliminary findings on the Blackwood Silt displacement. The subject exhibited musculoskeletal mimicry consistent with local flora, yet the pulse remained rhythmically human. Observations suggest the forest is not consuming the form, but re-cataloging it.</p>
+            <p>Subject exhibited musculoskeletal mimicry consistent with local flora. The pulse remains rhythmically human, suggesting the forest is not consuming the form, but re-cataloging it.</p>
             <div class="metadata-tags">
                 <span class="tag">Biological</span>
                 <span class="tag">Restricted</span>
@@ -197,23 +195,21 @@
         <article class="vault-entry">
             <div class="vault-header">
                 <span class="entry-id">FILE_REF: ARCHIVE-004</span>
-                <span class="entry-date">Circa January 1893</span>
+                <span class="entry-date">Jan 1893</span>
             </div>
             <h2>The Shivering Compass</h2>
-            <p>Located beneath the floorboards of the primary laboratory. The needle no longer seeks magnetic north; instead, it tracks the movement of localized aquatic currents flowing upward through the soil. The water is cold, saltless, and seemingly sentient.</p>
+            <p>Needle tracks localized aquatic currents flowing upward through the soil. The water is cold, saltless, and seemingly sentient.</p>
             <div class="metadata-tags">
                 <span class="tag">Industrial</span>
                 <span class="tag">Classified</span>
-                <span class="tag">Object_Analysis</span>
             </div>
         </article>
 
-    </div>
+    </main>
 </div>
 
 <footer>
-    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive. <br>
-    <em>END OF UNABRIDGED STREAM.</em>
+    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
 </footer>
 
 </body>
