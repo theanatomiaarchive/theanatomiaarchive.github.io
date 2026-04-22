@@ -11,6 +11,7 @@
             --bg-color: #0d0d0c;
             --parchment: #e2d1a4;
             --accent-red: #ff3333;
+            --terminal-green: #00ff41;
             --text-main: #e0dbcd;
             --border-style: 1px solid #4a422d;
         }
@@ -169,25 +170,48 @@
             color: #fff;
         }
 
-        /* DEEP ARCHIVE FOOTER NAVIGATION */
+        /* --- TERMINAL FOOTER NAVIGATION --- */
         .archive-footer-nav {
             text-align: center;
-            padding: 60px 0 20px;
+            padding: 80px 20px 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .terminal-container {
+            margin-bottom: 25px;
         }
 
         .archive-count {
-            color: #888273; /* Lightened for mobile legibility */
-            font-size: 0.75rem;
-            letter-spacing: 2.5px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace; 
+            color: var(--terminal-green);
+            font-size: 1.4rem;
             font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+            display: inline-block;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 12px;
+            height: 1.4rem;
+            background-color: var(--terminal-green);
+            margin-left: 5px;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
         }
 
         .archive-btn {
             color: var(--accent-red);
             text-decoration: none;
-            border: 1px solid #333;
+            border: 2px solid #333;
             padding: 14px 30px;
             letter-spacing: 3px;
             font-size: 0.85rem;
@@ -318,7 +342,9 @@
     </main>
 
     <div class="archive-footer-nav">
-        <p class="archive-count">TOTAL ENTRIES DETECTED: 1,250</p>
+        <div class="terminal-container">
+            <span class="archive-count">TOTAL ENTRIES DETECTED: 1,213<span class="cursor"></span></span>
+        </div>
         <a href="ledger.html" class="archive-btn">ACCESS UNABRIDGED LEDGER</a>
     </div>
 </div>
