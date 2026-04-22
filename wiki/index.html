@@ -23,12 +23,13 @@
             margin: 0;
             padding: 0;
             line-height: 1.4;
+            min-height: 100vh;
         }
 
         header {
             padding: 30px 10px;
             border-bottom: var(--border-style);
-            background: linear-gradient(to bottom, #1a1a17, #0d0d0c);
+            background: #141412;
             text-align: center;
         }
 
@@ -37,12 +38,14 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo-img {
             width: 65px;
             height: auto;
-            filter: drop-shadow(0 0 8px rgba(255, 51, 51, 0.5));
+            display: block;
         }
 
         h1 {
@@ -63,8 +66,8 @@
         }
 
         nav {
-            padding: 10px;
-            background: #141412;
+            padding: 15px;
+            background: #0d0d0c;
             border-bottom: var(--border-style);
             position: sticky;
             top: 0;
@@ -77,13 +80,16 @@
             color: var(--parchment);
             padding: 12px;
             width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
             box-sizing: border-box;
             font-family: 'IM Fell English', serif;
             font-size: 1rem;
         }
 
         .container {
-            padding: 20px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -91,28 +97,26 @@
         .artifact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .artifact-card {
             background: #141412;
             border: 1px solid #2e291b;
-            padding: 20px;
+            padding: 25px;
             text-decoration: none;
             display: block;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .artifact-card:hover {
             border-color: var(--accent-red);
-            background: #1a1a17;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .artifact-card.saturday-item {
             border: 1px solid #6e1a1a;
             background: #1a0f0f;
-            box-shadow: inset 0 0 10px rgba(255, 51, 51, 0.05);
         }
 
         .catalog-no {
@@ -120,18 +124,19 @@
             color: var(--accent-red);
             font-weight: bold;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .artifact-card h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin: 0 0 10px 0;
             color: var(--parchment);
             font-family: 'Playfair Display', serif;
         }
 
         .artifact-card p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             margin: 0;
             color: var(--text-main);
             font-style: italic;
@@ -143,7 +148,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
         }
 
@@ -151,16 +156,18 @@
             background: #1a1a17;
             border: 1px solid #4a422d;
             color: var(--parchment);
-            padding: 8px 16px;
+            padding: 10px 20px;
             font-family: 'IM Fell English', serif;
             cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.8rem;
         }
 
         /* --- THE CRT MONITOR FOOTER --- */
         .archive-footer-nav {
-            margin: 60px auto 40px;
+            margin: 80px auto 40px;
             width: 700px;
-            max-width: 90%;
+            max-width: 95%;
             background: #020502;
             border: 12px solid #1a1a17; 
             border-radius: 35px; 
@@ -171,4 +178,192 @@
             flex-direction: column;
             align-items: center; 
             justify-content: center;
-            box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 80px
+            box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 80px rgba(0, 255, 65, 0.1);
+        }
+
+        .archive-footer-nav::before {
+            content: " ";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .terminal-content { z-index: 5; text-align: center; }
+
+        .archive-count {
+            font-family: 'Courier New', monospace;
+            color: var(--terminal-green);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .command-prompt {
+            color: var(--terminal-green);
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 12px;
+            height: 1.4rem;
+            background-color: var(--terminal-green);
+            margin-left: 8px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #5a5444;
+            font-size: 0.8rem;
+            border-top: var(--border-style);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand-container">
+        <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
+        <h1>The Anatomia Archive</h1>
+    </div>
+    <span class="subtitle">Decades of Observation. A Ledger of the Unseen.</span>
+</header>
+
+<nav>
+    <input type="text" id="searchInput" class="search-bar" placeholder="Filter the Ledger by Keyword..." onkeyup="filterArtifacts()">
+</nav>
+
+<div class="container">
+    <div class="filters">
+        <button onclick="filterCategory('all')">View All</button>
+        <button onclick="filterCategory('biological')">Biological</button>
+        <button onclick="filterCategory('industrial')">Industrial</button>
+        <button onclick="filterCategory('ritualistic')">Ritualistic</button>
+    </div>
+
+    <main class="artifact-grid" id="artifactGrid">
+        <a href="theater-of-rot.html" class="artifact-card" data-category="biological">
+            <span class="catalog-no">EXHIBIT A</span>
+            <h2>The Theater of Rot</h2>
+            <p>A sealed bell jar containing the preserved moment of rapid cellular collapse.</p>
+        </a>
+        <a href="lens-of-observation.html" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">EXHIBIT B</span>
+            <h2>The Lens of Observation</h2>
+            <p>Specialized optics tuned to the frequency of lingering spiritual miasma.</p>
+        </a>
+        <a href="voice-of-the-vines.html" class="artifact-card" data-category="biological">
+            <span class="catalog-no">EXHIBIT C</span>
+            <h2>The Voice of the Vines</h2>
+            <p>Calcified root structures that pulse with a low, rhythmic thrumming.</p>
+        </a>
+        <a href="anatomists-compass.html" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">EXHIBIT D</span>
+            <h2>The Anatomist's Compass</h2>
+            <p>A maritime tracker modified to navigate bio-electric pulses.</p>
+        </a>
+
+        <a href="pending.html?id=E" class="artifact-card" data-category="ritualistic">
+            <span class="catalog-no">EXHIBIT E</span>
+            <h2>The Gardener's Ledger</h2>
+            <p>Hand-penned records detailing musculoskeletal mimicry in local flora.</p>
+        </a>
+
+        <a href="pending.html?id=001" class="artifact-card saturday-item" data-category="biological">
+            <span class="catalog-no">ITEM 001 - FIELD LOG</span>
+            <h2>The Anatomist's Bench</h2>
+            <p>The Blackwood Displacement. Investigation of the human form in transit.</p>
+        </a>
+
+        <a href="pending.html?id=F" class="artifact-card" data-category="biological">
+            <span class="catalog-no">EXHIBIT F</span>
+            <h2>The Calcified Spectacles</h2>
+            <p>Lenses clouded by mineral deposits recovered from the Blackwood silt.</p>
+        </a>
+        <a href="pending.html?id=G" class="artifact-card" data-category="ritualistic">
+            <span class="catalog-no">EXHIBIT G</span>
+            <h2>The Ossified Music Box</h2>
+            <p>A mechanism that plays melodies audible only through bone conduction.</p>
+        </a>
+        <a href="pending.html?id=H" class="artifact-card" data-category="ritualistic">
+            <span class="catalog-no">EXHIBIT H</span>
+            <h2>The Weaver’s Thimble</h2>
+            <p>Used for the surgical stitching of bio-electric organic matter.</p>
+        </a>
+        <a href="pending.html?id=I" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">EXHIBIT I</span>
+            <h2>The Surveyor’s Plumb</h2>
+            <p>A lead weight designed to measure the depth of non-physical voids.</p>
+        </a>
+        <a href="pending.html?id=J" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">EXHIBIT J</span>
+            <h2>The Laryngoscope Lens</h2>
+            <p>Optics for viewing the internal vibrations of the vocal cords.</p>
+        </a>
+        <a href="pending.html?id=K" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">EXHIBIT K</span>
+            <h2>The Clockmaker’s Loupe</h2>
+            <p>Precision tools for observing the mechanical gears of the human heart.</p>
+        </a>
+
+        <a href="pending.html?id=004" class="artifact-card saturday-item" data-category="industrial">
+            <span class="catalog-no">ITEM 004 - FIELD LOG</span>
+            <h2>The Shivering Compass</h2>
+            <p>The Tide Beneath the Floorboards. A navigator for localized aquatic currents.</p>
+        </a>
+    </main>
+
+    <div class="archive-footer-nav">
+        <div class="terminal-content">
+            <span class="archive-count">SYSTEM STATUS: 1,213 RECORDS FOUND</span>
+            <div class="command-line">
+                <a href="ledger.html" class="command-prompt">
+                    $ ENTER ARCHIVE
+                    <span class="cursor"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
+</footer>
+
+<script>
+    function filterArtifacts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('artifact-card');
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].querySelector('h2').innerText.toLowerCase();
+            cards[i].classList.toggle('hidden', !title.includes(input));
+        }
+    }
+
+    function filterCategory(cat) {
+        let cards = document.getElementsByClassName('artifact-card');
+        for (let i = 0; i < cards.length; i++) {
+            if (cat === 'all') cards[i].classList.remove('hidden');
+            else cards[i].classList.toggle('hidden', cards[i].dataset.category !== cat);
+        }
+    }
+</script>
+
+</body>
+</html>
