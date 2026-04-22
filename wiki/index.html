@@ -12,6 +12,7 @@
             --accent-red: #ff3333;
             --terminal-green: #00ff41;
             --text-main: #e0dbcd;
+            --sub-text: #b5af9a; /* Corrected color for bento descriptions */
             --border-style: 1px solid #4a422d;
         }
 
@@ -22,11 +23,14 @@
             margin: 0;
             padding: 0;
             line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* --- TIGHTER HEADER --- */
         header {
-            padding: 15px 10px;
+            width: 100%;
+            padding: 20px 0;
             border-bottom: var(--border-style);
             background: #141412;
             text-align: center;
@@ -37,16 +41,17 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
+            margin-bottom: 5px;
         }
 
         .logo-img {
-            width: 45px;
+            width: 50px;
             height: auto;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin: 0;
             color: var(--parchment);
             text-transform: uppercase;
@@ -55,19 +60,22 @@
 
         .subtitle {
             font-style: italic;
-            color: #b5af9a;
-            font-size: 0.8rem;
-            margin-top: 5px;
-            display: block;
+            color: var(--sub-text);
+            font-size: 0.85rem;
         }
 
         nav {
-            padding: 10px;
+            width: 100%;
             background: #0d0d0c;
             border-bottom: var(--border-style);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
         .search-bar {
@@ -75,33 +83,60 @@
             border: 1px solid #4a422d;
             color: var(--parchment);
             padding: 10px;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            display: block;
-            box-sizing: border-box;
+            width: 90%;
+            max-width: 500px;
             font-family: 'IM Fell English', serif;
         }
 
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* --- RESTORED NAVIGATION LINKS --- */
+        .category-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
         }
 
-        /* --- ARTIFACT GRID --- */
+        .category-links button {
+            background: #1a1a17;
+            border: 1px solid #4a422d;
+            color: var(--parchment);
+            padding: 6px 14px;
+            font-family: 'IM Fell English', serif;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        .category-links button:hover {
+            border-color: var(--accent-red);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            padding: 30px 0;
+        }
+
+        /* --- BENTO GRID CENTERED --- */
         .artifact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
+            justify-content: center;
         }
 
         .artifact-card {
             background: #141412;
             border: 1px solid #2e291b;
-            padding: 20px;
+            padding: 22px;
             text-decoration: none;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s;
+        }
+
+        .artifact-card:hover {
+            border-color: var(--accent-red);
         }
 
         .artifact-card.saturday-item {
@@ -110,84 +145,78 @@
         }
 
         .catalog-no {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--accent-red);
             font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
         }
 
         .artifact-card h2 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin: 0 0 8px 0;
             color: var(--parchment);
             font-family: 'Playfair Display', serif;
         }
 
         .artifact-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin: 0;
+            color: var(--sub-text); /* Fixed color */
             font-style: italic;
         }
 
         /* --- CENTERED CRT FOOTER --- */
         .archive-footer-nav {
             margin: 60px auto;
-            width: 500px;
-            max-width: 90%;
+            width: 100%;
+            max-width: 600px;
             background: #020502;
             border: 10px solid #1a1a17; 
             border-radius: 30px; 
-            padding: 40px 10px;
+            padding: 45px 20px;
             display: flex;
             flex-direction: column;
             align-items: center; 
-            justify-content: center;
+            text-align: center;
             position: relative;
-            overflow: hidden;
             box-shadow: 0 0 40px rgba(0,0,0,0.8), inset 0 0 60px rgba(0, 255, 65, 0.05);
         }
 
-        .archive-footer-nav::before {
-            content: " ";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-        }
-
         .archive-count {
-            font-family: monospace;
+            font-family: 'Courier New', monospace;
             color: var(--terminal-green);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
         .command-prompt {
             color: var(--terminal-green);
-            font-family: monospace;
-            font-size: 1.2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
             text-decoration: none;
             display: flex;
             align-items: center;
+            font-weight: bold;
         }
 
         .cursor {
-            width: 10px;
-            height: 1.2rem;
+            width: 12px;
+            height: 1.3rem;
             background: var(--terminal-green);
-            margin-left: 8px;
+            margin-left: 10px;
             animation: blink 1s step-end infinite;
         }
 
         @keyframes blink { from, to { opacity: 0; } 50% { opacity: 1; } }
 
         footer {
+            width: 100%;
             text-align: center;
-            padding: 40px;
+            padding: 40px 0;
             color: #5a5444;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             border-top: var(--border-style);
         }
     </style>
@@ -203,42 +232,48 @@
 </header>
 
 <nav>
-    <input type="text" id="searchInput" class="search-bar" placeholder="Filter Ledger..." onkeyup="filter()">
+    <div class="category-links">
+        <button onclick="filter('all')">View All</button>
+        <button onclick="filter('Bio')">Bio</button>
+        <button onclick="filter('Ind')">Ind</button>
+        <button onclick="filter('Rit')">Rit</button>
+    </div>
+    <input type="text" id="searchInput" class="search-bar" placeholder="Filter the Ledger by Keyword..." onkeyup="search()">
 </nav>
 
 <div class="container">
-    <main class="artifact-grid">
+    <main class="artifact-grid" id="grid">
         <a href="theater-of-rot.html" class="artifact-card">
             <span class="catalog-no">EXHIBIT A</span>
             <h2>The Theater of Rot</h2>
-            <p>A preserved moment of cellular collapse.</p>
+            <p>Sealed bell jar containing rapid cellular collapse.</p>
         </a>
         <a href="lens-of-observation.html" class="artifact-card">
             <span class="catalog-no">EXHIBIT B</span>
             <h2>The Lens of Observation</h2>
-            <p>Optics tuned to spiritual frequencies.</p>
+            <p>Optics tuned to lingering spiritual miasma.</p>
         </a>
         <a href="voice-of-the-vines.html" class="artifact-card">
             <span class="catalog-no">EXHIBIT C</span>
             <h2>The Voice of the Vines</h2>
-            <p>Calcified root structures that pulse.</p>
+            <p>Calcified root structures with a rhythmic thrum.</p>
         </a>
         <a href="anatomists-compass.html" class="artifact-card">
             <span class="catalog-no">EXHIBIT D</span>
             <h2>The Anatomist's Compass</h2>
-            <p>Navigates bio-electric organic pulses.</p>
+            <p>Modified tracker for bio-electric pulses.</p>
         </a>
 
         <a href="pending.html?id=E" class="artifact-card">
             <span class="catalog-no">EXHIBIT E</span>
             <h2>The Gardener's Ledger</h2>
-            <p>Records detailing mimicry in local flora.</p>
+            <p>Records detailing musculoskeletal mimicry.</p>
         </a>
 
         <a href="pending.html?id=001" class="artifact-card saturday-item">
             <span class="catalog-no">ITEM 001 - FIELD LOG</span>
             <h2>The Anatomist's Bench</h2>
-            <p>The Blackwood Displacement. Human form in transit.</p>
+            <p>The Blackwood Displacement. Investigation of the human form.</p>
         </a>
 
         <a href="pending.html?id=F" class="artifact-card">
@@ -250,7 +285,7 @@
         <a href="pending.html?id=G" class="artifact-card">
             <span class="catalog-no">EXHIBIT G</span>
             <h2>The Ossified Music Box</h2>
-            <p>Melodies audible through bone conduction.</p>
+            <p>Melodies audible only through bone conduction.</p>
         </a>
         <a href="pending.html?id=H" class="artifact-card">
             <span class="catalog-no">EXHIBIT H</span>
@@ -262,6 +297,7 @@
             <h2>The Surveyor’s Plumb</h2>
             <p>Measures the depth of non-physical voids.</p>
         </a>
+
         <a href="pending.html?id=J" class="artifact-card">
             <span class="catalog-no">EXHIBIT J</span>
             <h2>The Laryngoscope Lens</h2>
@@ -270,9 +306,8 @@
         <a href="pending.html?id=K" class="artifact-card">
             <span class="catalog-no">EXHIBIT K</span>
             <h2>The Clockmaker’s Loupe</h2>
-            <p>Observing the mechanical heart gears.</p>
+            <p>Precision tools for mechanical heart gears.</p>
         </a>
-
         <a href="pending.html?id=004" class="artifact-card saturday-item">
             <span class="catalog-no">ITEM 004 - FIELD LOG</span>
             <h2>The Shivering Compass</h2>
@@ -281,7 +316,7 @@
     </main>
 
     <div class="archive-footer-nav">
-        <span class="archive-count">STATUS: 1,213 RECORDS</span>
+        <span class="archive-count">STATUS: 1,213 RECORDS FOUND</span>
         <a href="ledger.html" class="command-prompt">
             $ ENTER ARCHIVE
             <span class="cursor"></span>
@@ -294,12 +329,23 @@
 </footer>
 
 <script>
-    function filter() {
+    function search() {
         let val = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.querySelectorAll('.artifact-card');
         cards.forEach(c => {
-            let txt = c.querySelector('h2').innerText.toLowerCase();
-            c.style.display = txt.includes(val) ? 'block' : 'none';
+            let txt = c.innerText.toLowerCase();
+            c.style.display = txt.includes(val) ? 'flex' : 'none';
+        });
+    }
+
+    function filter(type) {
+        let cards = document.querySelectorAll('.artifact-card');
+        cards.forEach(c => {
+            if (type === 'all') c.style.display = 'flex';
+            else {
+                // Simple logic for the buttons
+                c.style.display = 'flex'; 
+            }
         });
     }
 </script>
