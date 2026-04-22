@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masqueraide Protocols | Internal Directive</title>
+    <script src="../archive-lock.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --parchment: #e2d1a4;
+            --accent-red: #ff3333;
+            --text-main: #b5af9a;
+            --border-red: 1px solid #661111;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'IM Fell English', serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .scanner-line {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: rgba(255, 51, 51, 0.15);
+            box-shadow: 0 0 15px var(--accent-red);
+            z-index: 1000;
+            pointer-events: none;
+            animation: scan 10s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            border-bottom: var(--border-red);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .directive-no {
+            color: var(--accent-red);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--parchment);
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .protocol-section {
+            background: rgba(20, 20, 18, 0.5);
+            border-left: 3px solid var(--accent-red);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--parchment);
+            font-size: 1.2rem;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .warning-box {
+            border: var(--border-red);
+            padding: 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .warning-text {
+            color: var(--accent-red);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        .back-nav {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-nav a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .back-nav a:hover {
+            color: var(--accent-red);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.75rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+<div class="scanner-line"></div>
+
+<div class="container">
+    <header>
+        <div class="directive-no">DIRECTIVE 18.92.B</div>
+        <h1>The Masqueraide Protocols</h1>
+        <p style="font-style: normal; color: #666;">Handling Guidelines for Authorized Observers of the Anatomia Archive.</p>
+    </header>
+
+    <div class="protocol-section">
+        <h2>I. The Principle of Selective Description</h2>
+        <p>No artifact within the Ledger shall be described in its absolute entirety. To define a vessel, a specimen, or a site with 100% accuracy is to provide it a conceptual exit from the Archive.</p>
+        <p><em>Always leave one detail unwritten. The blank space is the containment.</em></p>
+    </div>
+
+    <div class="protocol-section">
+        <h2>II. The Saturday Reconciliation</h2>
+        <p>Artifacts (The Objects) and Field Logs (The Narratives) must be categorized separately. When a story and its corresponding object occupy the same mental space for more than 72 hours, the object may begin to "manifest" the fiction.</p>
+        <p><em>Saturdays are reserved for the stories. Weekdays are for the steel and glass of the exhibits.</em></p>
+    </div>
+
+    <div class="protocol-section">
+        <h2>III. The Tax of Sight</h2>
+        <p>Prolonged observation of the digital Ledger induces a spiritual miasma on the retinas. For every hour spent reviewing the Unabridged Ledger, the observer must spend ten minutes in total sensory deprivation (darkness).</p>
+        <p><em>If the red scanner beam appears to turn blue, cease observation immediately.</em></p>
+    </div>
+
+    <div class="protocol-section">
+        <h2>IV. The Shadow Clause</h2>
+        <p>Should any text within a Ledger entry change while you are actively reading it, do not attempt to correct it. Close the connection, vacate the immediate area, and wait for the scanner to pass over the entry three full cycles.</p>
+    </div>
+
+    <div class="warning-box">
+        <span class="warning-text">Violation of these protocols may result in permanent Specimen Status.</span>
+    </div>
+
+    <div class="back-nav">
+        <a href="ledger.html">← RETURN TO UNABRIDGED LEDGER</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 1892 - 2026 Masqueraide Workshop. Unauthorized duplication is a Protocol IV violation.
+</footer>
+
+</body>
+</html>
 
