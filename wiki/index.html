@@ -130,11 +130,12 @@
             padding: 15px;
             text-decoration: none;
             display: block;
-            transition: border 0.3s ease;
+            transition: 0.3s;
         }
 
-        .artifact-card:hover {
+        .artifact-card:hover:not(.draft) {
             border-color: var(--accent-red);
+            background: #1a1a17;
         }
 
         .artifact-card.hidden { display: none; }
@@ -144,136 +145,3 @@
             color: var(--accent-red);
             font-weight: bold;
             letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        h2 { font-size: 1.2rem; margin: 4px 0; color: var(--parchment); }
-        p { font-size: 0.9rem; margin: 0; color: var(--text-main); }
-
-        footer {
-            text-align: center;
-            padding: 30px 15px;
-            color: #5a5444;
-            font-size: 0.7rem;
-            border-top: var(--border-style);
-        }
-
-        @media (min-width: 850px) {
-            header { padding: 30px; }
-            .logo-img { width: 70px; }
-            h1 { font-size: 2.5rem; }
-            .container {
-                max-width: 1100px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: 220px 1fr;
-                gap: 30px;
-            }
-            .sidebar { text-align: left; }
-            .sidebar ul { flex-direction: column; align-items: flex-start; }
-            .sidebar button, .sidebar a { background: none; border: none; padding: 0; }
-            .artifact-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="brand-container">
-        <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
-        <h1>The Anatomia Archive</h1>
-    </div>
-    <span class="subtitle">A Comprehensive Catalog of the Obscure, the Occult, and the Forgotten</span>
-</header>
-
-<nav>
-    <input type="text" id="searchInput" class="search-bar" placeholder="Search the Ledger..." onkeyup="filterArtifacts()">
-</nav>
-
-<div class="container">
-    <aside class="sidebar">
-        <h3>Classifications</h3>
-        <ul>
-            <li><button onclick="filterCategory('all')">All</button></li>
-            <li><button onclick="filterCategory('biological')">Biological</button></li>
-            <li><button onclick="filterCategory('industrial')">Industrial</button></li>
-            <li><button onclick="filterCategory('ritualistic')">Ritualistic</button></li>
-        </ul>
-
-        <h3>Researcher Logs</h3>
-        <ul>
-            <li><a href="silt-expedition.html">The Silt Expedition</a></li>
-            <li><a href="protocols.html">Masqueraide Protocols</a></li>
-        </ul>
-    </aside>
-
-    <main class="artifact-grid" id="artifactGrid">
-        <a href="theater-of-rot.html" class="artifact-card" data-category="biological">
-            <span class="catalog-no">OBJ ID: 001-TR</span>
-            <h2>The Theater of Rot</h2>
-            <p>An intricate display of rapid cellular decay, frozen mid-collapse within a sealed bell jar.</p>
-        </a>
-
-        <a href="lens-of-observation.html" class="artifact-card" data-category="industrial">
-            <span class="catalog-no">OBJ ID: 002-LO</span>
-            <h2>The Lens of Observation</h2>
-            <p>A specialized glass optic that reveals heat signatures and lingering spiritual miasma.</p>
-        </a>
-
-        <a href="voice-of-the-vines.html" class="artifact-card" data-category="biological">
-            <span class="catalog-no">OBJ ID: 003-VV</span>
-            <h2>The Voice of the Vines</h2>
-            <p>Calcified root structures that emit low-frequency rhythmic thrumming when handled.</p>
-        </a>
-
-        <a href="anatomists-compass.html" class="artifact-card" data-category="industrial">
-            <span class="catalog-no">OBJ ID: 004-AC</span>
-            <h2>The Anatomist's Compass</h2>
-            <p>A maritime instrument modified to track bio-electric pulses rather than magnetic north.</p>
-        </a>
-
-        <div class="artifact-card" data-category="ritualistic" style="opacity: 0.6;">
-            <span class="catalog-no">OBJ ID: 005-GL</span>
-            <h2>The Gardener's Ledger</h2>
-            <p>Cataloged Draft: Records of the soil composition within the Blackwood basin.</p>
-        </div>
-
-        <div class="artifact-card" data-category="industrial" style="opacity: 0.6;">
-            <span class="catalog-no">OBJ ID: 006-CS</span>
-            <h2>The Calcified Spectacles</h2>
-            <p>Cataloged Draft: Eyewear recovered from the silt, lenses clouded by mineral deposits.</p>
-        </div>
-
-        <div class="artifact-card" data-category="ritualistic" style="opacity: 0.6;">
-            <span class="catalog-no">OBJ ID: 007-OMB</span>
-            <h2>The Ossified Music Box</h2>
-            <p>Cataloged Draft: A device that plays a tune only audible through bone conduction.</p>
-        </div>
-    </main>
-
-</div>
-
-<footer>
-    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
-</footer>
-
-<script>
-    function filterArtifacts() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('artifact-card');
-        for (let i = 0; i < cards.length; i++) {
-            let title = cards[i].querySelector('h2').innerText.toLowerCase();
-            cards[i].classList.toggle('hidden', !title.includes(input));
-        }
-    }
-
-    function filterCategory(cat) {
-        let cards = document.getElementsByClassName('artifact-card');
-        for (let i = 0; i < cards.length; i++) {
-            cards[i].classList.toggle('hidden', cat !== 'all' && cards[i].dataset.category !== cat);
-        }
-    }
-</script>
-
-</body>
-</html>
