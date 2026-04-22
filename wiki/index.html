@@ -10,7 +10,7 @@
         :root {
             --bg-color: #0d0d0c;
             --parchment: #e2d1a4;
-            --accent-red: #ff3333; /* Updated to Bright Crimson */
+            --accent-red: #ff3333;
             --text-main: #e0dbcd;
             --border-style: 1px solid #4a422d;
         }
@@ -130,6 +130,11 @@
             padding: 15px;
             text-decoration: none;
             display: block;
+            transition: border 0.3s ease;
+        }
+
+        .artifact-card:hover {
+            border-color: var(--accent-red);
         }
 
         .artifact-card.hidden { display: none; }
@@ -192,40 +197,58 @@
             <li><button onclick="filterCategory('all')">All</button></li>
             <li><button onclick="filterCategory('biological')">Biological</button></li>
             <li><button onclick="filterCategory('industrial')">Industrial</button></li>
-            <li><button onclick="filterCategory('ritual')">Ritualistic</button></li>
+            <li><button onclick="filterCategory('ritualistic')">Ritualistic</button></li>
         </ul>
 
         <h3>Researcher Logs</h3>
         <ul>
-            <li><a href="silt.html">The Silt Expedition</a></li>
-            <li><a href="#">Masqueraide Protocols</a></li>
+            <li><a href="silt-expedition.html">The Silt Expedition</a></li>
+            <li><a href="protocols.html">Masqueraide Protocols</a></li>
         </ul>
     </aside>
 
     <main class="artifact-grid" id="artifactGrid">
-        <a href="silt.html" class="artifact-card" data-category="ritual">
-            <span class="catalog-no">OBJ ID: 081-BW</span>
-            <h2>Silt-Covered Boot</h2>
-            <p>Recovered from the Blackwood Basin. The mud remains wet regardless of ambient temperature.</p>
+        <a href="theater-of-rot.html" class="artifact-card" data-category="biological">
+            <span class="catalog-no">OBJ ID: 001-TR</span>
+            <h2>The Theater of Rot</h2>
+            <p>An intricate display of rapid cellular decay, frozen mid-collapse within a sealed bell jar.</p>
         </a>
 
-        <a href="calcified-sigh.html" class="artifact-card" data-category="biological">
-            <span class="catalog-no">OBJ ID: 002-CS</span>
-            <h2>The Calcified Sigh</h2>
-            <p>A human lung turned to solid alabaster. It is said to weigh significantly more during a full moon.</p>
+        <a href="lens-of-observation.html" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">OBJ ID: 002-LO</span>
+            <h2>The Lens of Observation</h2>
+            <p>A specialized glass optic that reveals heat signatures and lingering spiritual miasma.</p>
         </a>
 
-        <a href="brass-lung.html" class="artifact-card" data-category="industrial">
-            <span class="catalog-no">OBJ ID: 003-BL</span>
-            <h2>The Brass Lung</h2>
-            <p>A mechanical bellows device used in early attempts to filter spiritual miasma from the air.</p>
+        <a href="voice-of-the-vines.html" class="artifact-card" data-category="biological">
+            <span class="catalog-no">OBJ ID: 003-VV</span>
+            <h2>The Voice of the Vines</h2>
+            <p>Calcified root structures that emit low-frequency rhythmic thrumming when handled.</p>
         </a>
 
-        <a href="exhibit-d.html" class="artifact-card" data-category="biological">
-            <span class="catalog-no">OBJ ID: 004-FLR</span>
-            <h2>The Floorboards</h2>
-            <p>A section of warped timber from the archive's lower level. It appears to "exhale" a fine, dark silt when stepped upon during evening hours.</p>
+        <a href="anatomists-compass.html" class="artifact-card" data-category="industrial">
+            <span class="catalog-no">OBJ ID: 004-AC</span>
+            <h2>The Anatomist's Compass</h2>
+            <p>A maritime instrument modified to track bio-electric pulses rather than magnetic north.</p>
         </a>
+
+        <div class="artifact-card" data-category="ritualistic" style="opacity: 0.6;">
+            <span class="catalog-no">OBJ ID: 005-GL</span>
+            <h2>The Gardener's Ledger</h2>
+            <p>Cataloged Draft: Records of the soil composition within the Blackwood basin.</p>
+        </div>
+
+        <div class="artifact-card" data-category="industrial" style="opacity: 0.6;">
+            <span class="catalog-no">OBJ ID: 006-CS</span>
+            <h2>The Calcified Spectacles</h2>
+            <p>Cataloged Draft: Eyewear recovered from the silt, lenses clouded by mineral deposits.</p>
+        </div>
+
+        <div class="artifact-card" data-category="ritualistic" style="opacity: 0.6;">
+            <span class="catalog-no">OBJ ID: 007-OMB</span>
+            <h2>The Ossified Music Box</h2>
+            <p>Cataloged Draft: A device that plays a tune only audible through bone conduction.</p>
+        </div>
     </main>
 
 </div>
