@@ -30,26 +30,38 @@
 
         header {
             width: 100%;
-            padding: 15px 0;
+            padding: 25px 0; /* Slight padding increase to accommodate larger logo */
             border-bottom: var(--border-style);
             background: #141412;
             text-align: center;
         }
 
         .brand-container {
-            display: inline-flex;
+            /* Changed from row to column for unified text alignment */
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            /* Added margin-left to pull logo away from the edge without affecting title centering */
-            margin-left: 20px; 
+            width: 100%;
+            position: relative; /* Base for logo positioning */
         }
 
-        .logo-img { width: 45px; height: auto; }
+        /* --- ENLARGED AND RE-POSITIONED LOGO --- */
+        .logo-img {
+            width: 60px; /* Base size increased from 45px */
+            height: auto;
+            /* Positioning logic to center the logo in the visual left-third of the screen, creating balance */
+            position: absolute;
+            left: 50%; /* Center the anchor point */
+            transform: translateX(-50%); /* Pull the logo left by half its width for true centering */
+            margin-left: -33%; /* Push it left by a third of the screen width, moving it off the edge and creating the requested framing */
+            top: 50%; /* Center it vertically */
+            margin-top: -30px; /* Pull it up by half its height for vertical visual centering (60px height assumed) */
+        }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem; /* Scaled text for better visibility from gold code */
             margin: 0;
             color: var(--parchment);
             text-transform: uppercase;
@@ -59,14 +71,14 @@
         .subtitle {
             font-style: italic;
             color: var(--sub-text);
-            font-size: 0.75rem;
+            font-size: 0.9rem; /* Scaled subtitle from gold code */
             display: block;
-            margin-top: 2px;
+            margin-top: 5px;
         }
 
         nav {
             width: 100%;
-            padding: 10px 0;
+            padding: 15px 0;
             background: #0d0d0c;
             border-bottom: var(--border-style);
             position: sticky;
@@ -76,59 +88,64 @@
         }
 
         .category-links {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 12px;
         }
 
         .category-links button {
             background: #1a1a17;
             border: 1px solid #4a422d;
             color: var(--parchment);
-            padding: 4px 10px;
+            padding: 6px 15px;
             font-family: 'IM Fell English', serif;
             cursor: pointer;
             text-transform: uppercase;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
+            transition: 0.3s ease; /* Smooth hover from gold code */
+        }
+
+        .category-links button:hover {
+            border-color: var(--accent-red);
+            color: #fff;
         }
 
         .search-bar {
             background: #000;
             border: 1px solid #4a422d;
             color: var(--parchment);
-            padding: 8px;
-            width: 85%;
-            max-width: 450px;
+            padding: 12px;
+            width: 90%;
+            max-width: 600px; /* Scaled search bar width from gold code */
             font-family: 'IM Fell English', serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .container {
             width: 90%;
-            max-width: 1100px;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            max-width: 1200px;
+            padding: 40px 0;
         }
 
         .artifact-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .artifact-card {
-            width: 100%;
-            max-width: 450px;
             background: #141412;
             border: 1px solid #2e291b;
-            padding: 20px;
+            padding: 25px;
             text-decoration: none;
             display: block;
+            transition: transform 0.3s ease, border-color 0.3s ease; /* Enhanced visual from gold code */
+        }
+
+        .artifact-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-5px);
         }
 
         .artifact-card.saturday-item {
@@ -137,78 +154,80 @@
         }
 
         .catalog-no {
-            font-size: 0.65rem;
+            font-size: 0.8rem; /* Optimized catalog visibility from gold code */
             color: var(--accent-red);
             font-weight: bold;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .artifact-card h2 {
-            font-size: 1.3rem;
-            margin: 0 0 5px 0;
+            font-size: 1.5rem; /* Scaled bento title from gold code */
+            margin: 0 0 10px 0;
             color: var(--parchment);
             font-family: 'Playfair Display', serif;
         }
 
         .artifact-card p {
-            font-size: 0.85rem;
+            font-size: 1rem; /* Scaled description text from gold code */
             margin: 0;
             color: var(--sub-text);
             font-style: italic;
         }
 
+        /* --- THE CRT FOOTER (UNCHANGED) --- */
         .archive-footer-nav {
-            margin: 40px 0;
+            margin: 80px auto;
             width: 100%;
-            max-width: 450px;
+            max-width: 700px;
             background: #020502;
-            border: 8px solid #1a1a17; 
-            border-radius: 25px; 
-            padding: 30px 10px;
+            border: 12px solid #1a1a17; 
+            border-radius: 35px; 
+            padding: 60px 20px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 50px rgba(0, 255, 65, 0.05);
+            box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 80px rgba(0, 255, 65, 0.05);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            position: relative; /* base for positioning inside the CRT monitor */
+            overflow: hidden; /* clean edges for monitor */
         }
 
         .archive-count {
-            font-family: monospace;
+            font-family: 'Courier New', monospace;
             color: var(--terminal-green);
-            font-size: 1rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
         }
 
         .command-prompt {
             color: var(--terminal-green);
-            font-family: monospace;
-            font-size: 1.1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
             text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
             font-weight: bold;
         }
 
         .cursor {
-            width: 8px;
-            height: 1.1rem;
+            width: 12px;
+            height: 1.4rem;
             background: var(--terminal-green);
-            margin-left: 8px;
+            margin-left: 10px;
             animation: blink 1s step-end infinite;
         }
 
         @keyframes blink { from, to { opacity: 0; } 50% { opacity: 1; } }
 
-        .bottom-copyright {
+        footer {
+            width: 100%;
             text-align: center;
-            font-size: 0.55rem;
-            color: #444;
-            margin-bottom: 30px;
-            letter-spacing: 0.5px;
+            padding: 60px 0;
+            color: #5a5444;
+            font-size: 0.8rem;
+            border-top: var(--border-style);
         }
     </style>
 </head>
@@ -217,9 +236,12 @@
 <header>
     <div class="brand-container">
         <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
-        <h1>The Anatomia Archive</h1>
+        
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <h1>The Anatomia Archive</h1>
+            <span class="subtitle">Decades of Observation. A Ledger of the Unseen.</span>
+        </div>
     </div>
-    <span class="subtitle">Decades of Observation. A Ledger of the Unseen.</span>
 </header>
 
 <nav>
@@ -229,7 +251,7 @@
         <button onclick="filter('industrial')">Industrial</button>
         <button onclick="filter('ritualistic')">Ritualistic</button>
     </div>
-    <input type="text" id="searchInput" class="search-bar" placeholder="Filter Ledger..." onkeyup="search()">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Filter the Ledger by Keyword..." onkeyup="search()">
 </nav>
 
 <div class="container">
@@ -252,7 +274,7 @@
         <a href="anatomists-compass.html" class="artifact-card" data-cat="industrial">
             <span class="catalog-no">EXHIBIT D</span>
             <h2>The Anatomist's Compass</h2>
-            <p>A machine reader modified to navigate bio-electric pulses.</p>
+            <p>A maritime tracker modified to navigate bio-electric pulses.</p>
         </a>
         <a href="pending.html" class="artifact-card" data-cat="ritualistic">
             <span class="catalog-no">EXHIBIT E</span>
@@ -307,17 +329,18 @@
     <div class="archive-footer-nav">
         <span class="archive-count">SYSTEM STATUS: 1,213 RECORDS FOUND</span>
         <a href="ledger.html" class="command-prompt">
-            $ ENTER ARCHIVE
+            $ CLICK HERE TO ENTER ARCHIVE
             <span class="cursor"></span>
         </a>
     </div>
-
-    <div class="bottom-copyright">
-        © 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
-    </div>
 </div>
 
+<footer>
+    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
+</footer>
+
 <script>
+    // Search function preserved from gold code
     function search() {
         let val = document.getElementById('searchInput').value.toLowerCase();
         let cards = document.querySelectorAll('.artifact-card');
@@ -327,6 +350,7 @@
         });
     }
 
+    // Filter function preserved from gold code
     function filter(cat) {
         let cards = document.querySelectorAll('.artifact-card');
         cards.forEach(c => {
