@@ -26,12 +26,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden; /* Prevents horizontal wonkiness */
+            overflow-x: hidden;
         }
 
+        /* --- STABILIZED HEADER --- */
         header {
             width: 100%;
-            padding: 25px 0;
+            padding: 20px 0;
             border-bottom: var(--border-style);
             background: #141412;
             text-align: center;
@@ -39,44 +40,47 @@
 
         .brand-container {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
-            position: relative;
+            max-width: 100vw;
         }
 
         .logo-img {
-            width: 60px;
+            width: 55px; /* Slightly adjusted for better fit */
             height: auto;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-left: -33%; 
-            top: 50%;
-            margin-top: -30px;
+            margin-right: 15px; /* Fixed spacing instead of absolute positioning to prevent overlap */
+        }
+
+        .title-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.3rem; /* Scaled down to prevent overlap with logo */
             margin: 0;
             color: var(--parchment);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            line-height: 1.1;
         }
 
         .subtitle {
             font-style: italic;
             color: var(--sub-text);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: block;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
+        /* --- STABILIZED NAVIGATION --- */
         nav {
             width: 100%;
-            padding: 15px 0;
+            padding: 12px 0;
             background: #0d0d0c;
             border-bottom: var(--border-style);
             position: sticky;
@@ -88,23 +92,24 @@
         }
 
         .category-links {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Fixes "over the edges" issue */
-            gap: 8px;
-            width: 95%;
+            flex-wrap: wrap; 
+            gap: 6px;
+            width: 98%;
         }
 
         .category-links button {
             background: #1a1a17;
             border: 1px solid #4a422d;
             color: var(--parchment);
-            padding: 4px 8px; /* Slightly smaller for fit */
+            padding: 5px 8px;
             font-family: 'IM Fell English', serif;
             cursor: pointer;
             text-transform: uppercase;
-            font-size: 0.7rem; /* Shrinking font to fit boxes */
+            font-size: 0.65rem; /* Compact font for link box stability */
+            white-space: nowrap;
         }
 
         .search-bar {
@@ -118,6 +123,7 @@
             font-size: 0.9rem;
         }
 
+        /* --- EXHIBIT GRID (UNCHANGED) --- */
         .container {
             width: 90%;
             max-width: 1100px;
@@ -172,7 +178,7 @@
             font-style: italic;
         }
 
-        /* --- STABILIZED CRT FOOTER --- */
+        /* --- CRT FOOTER (UNCHANGED) --- */
         .archive-footer-nav {
             margin: 40px auto;
             width: 90%;
@@ -187,7 +193,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            align-self: center; /* Forces center alignment */
         }
 
         .archive-count {
@@ -231,7 +236,7 @@
 <header>
     <div class="brand-container">
         <img src="../Logopit_1776777067963.png" alt="Logo" class="logo-img">
-        <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="title-block">
             <h1>The Anatomia Archive</h1>
             <span class="subtitle">Decades of Observation. A Ledger of the Unseen.</span>
         </div>
