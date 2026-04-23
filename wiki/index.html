@@ -38,9 +38,8 @@
         }
 
         .brand-container {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 15px;
         }
 
@@ -157,7 +156,6 @@
             font-style: italic;
         }
 
-        /* --- THE CRT FOOTER --- */
         .archive-footer-nav {
             margin: 60px auto;
             width: 100%;
@@ -203,11 +201,18 @@
 
         footer {
             text-align: center;
-            padding: 60px;
+            padding: 60px 0;
             color: #5a5444;
             font-size: 0.8rem;
             border-top: var(--border-style);
             width: 100%;
+        }
+
+        .bottom-copyright {
+            font-size: 0.6rem;
+            color: #444;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -241,22 +246,7 @@
         <a href="lens-of-observation.html" class="artifact-card" data-cat="industrial">
             <span class="catalog-no">EXHIBIT B</span>
             <h2>The Lens of Observation</h2>
-            <p>Optics tuned to spiritual frequencies.</p>
-        </a>
-        <a href="voice-of-the-vines.html" class="artifact-card" data-cat="biological">
-            <span class="catalog-no">EXHIBIT C</span>
-            <h2>The Voice of the Vines</h2>
-            <p>Calcified root structures with a rhythmic thrum.</p>
-        </a>
-        <a href="anatomists-compass.html" class="artifact-card" data-cat="industrial">
-            <span class="catalog-no">EXHIBIT D</span>
-            <h2>The Anatomist's Compass</h2>
-            <p>Navigates bio-electric organic pulses.</p>
-        </a>
-        <a href="pending.html?id=E" class="artifact-card" data-cat="ritualistic">
-            <span class="catalog-no">EXHIBIT E</span>
-            <h2>The Gardener's Ledger</h2>
-            <p>Records detailing mimicry in local flora.</p>
+            <p>Optics tuned to lingering spiritual miasma.</p>
         </a>
 
         <a href="pending.html?id=001" class="artifact-card saturday-item" data-cat="biological">
@@ -265,42 +255,7 @@
             <p>The Blackwood Displacement. Human form in transit.</p>
         </a>
 
-        <a href="pending.html?id=F" class="artifact-card" data-cat="biological">
-            <span class="catalog-no">EXHIBIT F</span>
-            <h2>The Calcified Spectacles</h2>
-            <p>Lenses recovered from the Blackwood silt.</p>
-        </a>
-        <a href="pending.html?id=G" class="artifact-card" data-cat="ritualistic">
-            <span class="catalog-no">EXHIBIT G</span>
-            <h2>The Ossified Music Box</h2>
-            <p>Melodies audible through bone conduction.</p>
-        </a>
-        <a href="pending.html?id=H" class="artifact-card" data-cat="ritualistic">
-            <span class="catalog-no">EXHIBIT H</span>
-            <h2>The Weaver’s Thimble</h2>
-            <p>Surgical stitching of bio-electric matter.</p>
-        </a>
-        <a href="pending.html?id=I" class="artifact-card" data-cat="industrial">
-            <span class="catalog-no">EXHIBIT I</span>
-            <h2>The Surveyor’s Plumb</h2>
-            <p>Measures the depth of non-physical voids.</p>
-        </a>
-        <a href="pending.html?id=J" class="artifact-card" data-cat="industrial">
-            <span class="catalog-no">EXHIBIT J</span>
-            <h2>The Laryngoscope Lens</h2>
-            <p>Vibrations of the internal vocal cords.</p>
-        </a>
-        <a href="pending.html?id=K" class="artifact-card" data-cat="industrial">
-            <span class="catalog-no">EXHIBIT K</span>
-            <h2>The Clockmaker’s Loupe</h2>
-            <p>Observing mechanical heart gears.</p>
-        </a>
-        <a href="pending.html?id=004" class="artifact-card saturday-item" data-cat="industrial">
-            <span class="catalog-no">ITEM 004 - FIELD LOG</span>
-            <h2>The Shivering Compass</h2>
-            <p>The Tide Beneath the Floorboards.</p>
-        </a>
-    </main>
+        </main>
 
     <div class="archive-footer-nav">
         <span class="archive-count">SYSTEM STATUS: 1,213 RECORDS FOUND</span>
@@ -309,11 +264,14 @@
             <span class="cursor"></span>
         </a>
     </div>
+
+    <div class="bottom-copyright">
+        © 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
+    </div>
 </div>
 
 <footer>
-    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
-</footer>
+    </footer>
 
 <script>
     function search() {
