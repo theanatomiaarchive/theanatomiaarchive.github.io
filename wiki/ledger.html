@@ -149,6 +149,21 @@
 </footer>
 
 <script>
+    // These are the exhibits we have actually built
+    const activeExhibits = {
+        'A': 'theater-of-rot.html',
+        'B': 'lens-of-observation.html',
+        'C': 'voice-of-the-vines.html',
+        'D': 'anatomists-compass.html',
+        'E': 'gardeners-ledger.html',
+        'F': 'calcified-spectacles.html',
+        'G': 'ossified-music-box.html',
+        'H': 'weavers-thimble.html',
+        'I': 'surveyors-plumb.html',
+        'J': 'laryngoscope-lens.html',
+        'K': 'clockmakers-loupe.html'
+    };
+
     function openVault(name, start, end) {
         const modal = document.getElementById('vaultModal');
         const title = document.getElementById('modalTitle');
@@ -159,14 +174,28 @@
 
         for (let i = start; i <= end; i++) {
             let a = document.createElement('a');
-            a.href = "pending.html?id=" + i;
+            let label;
+            let targetUrl;
 
+            // Determine if we use a Letter (A-Z) or a Number
             if (i <= 26) {
-                const letter = String.fromCharCode(64 + i);
-                a.innerText = "EXHIBIT " + letter;
+                label = String.fromCharCode(64 + i);
             } else {
-                a.innerText = "EXHIBIT " + i;
+                label = i.toString();
             }
+
+            // Check if this specific label is in our "active" list
+            if (activeExhibits[label]) {
+                targetUrl = activeExhibits[label];
+                a.style.borderColor = "var(--red)";
+                a.style.color = "white";
+                a.style.background = "rgba(255, 51, 51, 0.05)";
+            } else {
+                targetUrl = "pending.html?id=" + i;
+            }
+
+            a.href = targetUrl;
+            a.innerText = "EXHIBIT " + label;
             list.appendChild(a);
         }
 
@@ -197,6 +226,7 @@
         }
     }
 </script>
+
 
 </body>
 </html>
