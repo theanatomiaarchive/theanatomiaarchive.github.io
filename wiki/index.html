@@ -106,6 +106,9 @@
             width: 90%;
             max-width: 1100px;
             padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .artifact-grid {
@@ -113,6 +116,7 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
+            width: 100%;
         }
 
         .artifact-card {
@@ -152,8 +156,9 @@
             font-style: italic;
         }
 
+        /* --- THE CRT FOOTER (CENTERED) --- */
         .archive-footer-nav {
-            margin: 40px auto;
+            margin: 40px 0;
             width: 100%;
             max-width: 450px;
             background: #020502;
@@ -165,6 +170,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         .archive-count {
@@ -172,6 +178,7 @@
             color: var(--terminal-green);
             font-size: 1rem;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .command-prompt {
@@ -181,6 +188,7 @@
             text-decoration: none;
             display: flex;
             align-items: center;
+            justify-content: center;
             font-weight: bold;
         }
 
@@ -198,7 +206,7 @@
             text-align: center;
             font-size: 0.55rem;
             color: #444;
-            margin: 30px 0;
+            margin-bottom: 30px;
             letter-spacing: 0.5px;
         }
     </style>
@@ -267,7 +275,6 @@
             <h2>The Ossified Music Box</h2>
             <p>A mechanism that plays melodies audible only through bone conduction.</p>
         </a>
-
         <a href="pending.html" class="artifact-card" data-cat="biological">
             <span class="catalog-no">EXHIBIT H</span>
             <h2>The Weaver's Thimble</h2>
