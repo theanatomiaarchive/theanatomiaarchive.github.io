@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item 001: The Anatomist's Bench | Field Log</title>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0d0c;
+            --parchment: #e2d1a4;
+            --accent-red: #ff3333;
+            --field-red: #6e1a1a;
+            --text-main: #e0dbcd;
+            --sub-text: #b5af9a; 
+            --border-style: 1px solid #4a422d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'IM Fell English', serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--field-red);
+            background: #1a0f0f; /* Darker red-tinted background for Field Logs */
+            text-align: center;
+        }
+
+        .nav-back {
+            text-decoration: none;
+            color: var(--accent-red);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: var(--parchment);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .log-stamp {
+            color: #fff;
+            background: var(--field-red);
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            padding: 8px 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+
+        .content-container {
+            width: 90%;
+            max-width: 800px;
+            padding: 40px 0;
+        }
+
+        .exhibit-hero {
+            width: 100%;
+            height: 350px;
+            background: #141412;
+            border: 1px solid var(--field-red);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .exhibit-hero::after {
+            content: "FIELD PHOTOGRAPH: BLACKWOOD DISPLACEMENT";
+            color: #4a1a1a;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .observation-log {
+            background: #141412;
+            border: 1px solid var(--field-red);
+            padding: 40px;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.8);
+        }
+
+        .observation-log h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--parchment);
+            border-bottom: 1px solid var(--field-red);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .meta-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: var(--sub-text);
+            text-transform: uppercase;
+        }
+
+        .meta-item b {
+            color: var(--accent-red);
+            display: block;
+        }
+
+        .narrative-body {
+            font-size: 1.1rem;
+            white-space: pre-line;
+            color: var(--text-main);
+        }
+
+        .footer-nav {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .footer-nav a {
+            color: var(--parchment);
+            text-decoration: none;
+            border: 1px solid var(--field-red);
+            padding: 10px 20px;
+            background: #1a0f0f;
+        }
+
+        @media (max-width: 600px) {
+            .meta-data { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="nav-back">← Return to Archive</a>
+    <h1>The Anatomist's Bench</h1>
+    <div class="log-stamp">FIELD LOG: ITEM 001</div>
+</header>
+
+<div class="content-container">
+    <div class="exhibit-hero"></div>
+
+    <article class="observation-log">
+        <div class="meta-data">
+            <div class="meta-item"><b>Event Reference</b> Blackwood Silt / The Massage Table</div>
+            <div class="meta-item"><b>Log Date</b> April 25, 2026</div>
+            <div class="meta-item"><b>Subject</b> Human Form Displacement</div>
+            <div class="meta-item"><b>Priority</b> High - Saturday Story</div>
+        </div>
+
+        <h2>Field Report</h2>
+        <div class="narrative-body">
+            This entry documents the convergence of the Blackwood Silt and the massage table event. It is a singular story—a study of the human form as it exists in transit between physical states.
+
+            Witnesses describe the bench not as a piece of furniture, but as a catalyst. When placed over the silt-heavy floorboards of the Archive, the table becomes a vessel for the supernatural forces lingering beneath. 
+
+            The history of the items within the museum is rich, filled with backstories that may never fully make sense to the uninitiated. This log captures the raw observation of a moment that defies explanation.
+
+            <i>"It is like walking into a life as a new friend; the history is there, heavy and unseen, felt only in the stillness of the room."</i>
+        </div>
+    </article>
+
+    <div class="footer-nav">
+        <a href="index.html">Back to Archive Index</a>
+    </div>
+</div>
+
+<footer style="padding: 40px; text-align: center; font-size: 0.7rem; color: #444;">
+    &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
+</footer>
+
+</body>
+</html>
