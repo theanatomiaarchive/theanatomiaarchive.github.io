@@ -13,6 +13,7 @@
             --text-main: #e0dbcd;
             --sub-text: #b5af9a; 
             --border-style: 1px solid #4a422d;
+            --phosphor-green: #00ff41;
         }
 
         body {
@@ -74,20 +75,18 @@
 
         .exhibit-hero {
             width: 100%;
-            height: 300px;
-            background: #1a1a17;
+            height: auto;
             border: var(--border-style);
             margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
+            background: #000;
         }
 
-        .exhibit-hero::after {
-            content: "AUDIO-KINETIC ANALYSIS: ARTIFACT G";
-            color: #2e291b;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+        .exhibit-hero img {
+            width: 100%;
+            display: block;
+            opacity: 0.8;
+            filter: grayscale(20%) contrast(110%);
         }
 
         .observation-log {
@@ -126,6 +125,14 @@
             color: var(--text-main);
         }
 
+        .curator-note {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #4a422d;
+            font-style: italic;
+            color: var(--phosphor-green);
+        }
+
         .footer-nav {
             margin: 60px 0;
             text-align: center;
@@ -147,34 +154,40 @@
 <body>
 
 <header>
-    <a href="index.html" class="nav-back">← Return to Ledger</a>
+    <a href="../index.html" class="nav-back">← Return to Ledger</a>
     <h1>The Ossified Music Box</h1>
     <div class="catalog-stamp">EXHIBIT G</div>
 </header>
 
 <div class="content-container">
-    <div class="exhibit-hero"></div>
+    <div class="exhibit-hero">
+        <img src="exhibit-g.jpg" alt="Exhibit G Analysis Visual">
+    </div>
 
     <article class="observation-log">
         <div class="meta-data">
-            <div class="meta-item"><b>Classification</b> Ritualistic / Harmonic</div>
-            <div class="meta-item"><b>Acquisition Date</b> December 05, 1912</div>
-            <div class="meta-item"><b>Containment</b> Heavy Velvet Wrapping</div>
-            <div class="meta-item"><b>Status</b> Wound / Resonating</div>
+            <div class="meta-item"><b>Classification</b> Bio-Harmonic / Atmospheric</div>
+            <div class="meta-item"><b>Acquisition Date</b> April 27, 2026</div>
+            <div class="meta-item"><b>Discovery Site</b> Turkey Mountain (Post-Storm)</div>
+            <div class="meta-item"><b>Status</b> Reconfiguring</div>
         </div>
 
-        <h2>Observer's Notes</h2>
+        <h2>Curator's Observation Log</h2>
         <div class="narrative-body">
-            A small, mahogany box with gears fashioned from polished marrow. When wound, it produces no audible sound in the traditional sense. However, if a subject places their palm against the wood, the melody resonates directly through the radius and ulna.
+            Recovered from a collapsed stone hollow on Turkey Mountain. The casing is standard oak, but the internal geometry is impossible. The cylinder is fashioned from polished ivory and hardened marrow. 
 
-            The tune is recognizable but impossible to name—a lullaby that feels like a memory from a person you've never met.
+            There are no pins. Instead, the cylinder features microscopic ridges that appear to soften and reconfigure based on ambient humidity levels. It produces a rhythmic, low-frequency hum—a sonic translation of the atmosphere itself.
 
-            <i>"It does not play for the ears. It plays for the frame that holds them."</i>
+            It does not play a song; it plays the room.
+
+            <div class="curator-note">
+                "Note: I have moved this to the second-floor lab. The 432Hz resonance is causing sympathetic vibrations in the other skeletal specimens. It likes the moisture in the air today."
+            </div>
         </div>
     </article>
 
     <div class="footer-nav">
-        <a href="index.html">Back to Archive Index</a>
+        <a href="../index.html">Back to Archive Index</a>
     </div>
 </div>
 
