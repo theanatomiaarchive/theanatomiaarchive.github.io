@@ -72,22 +72,25 @@
             padding: 40px 0;
         }
 
+        /* FIX: Scaling the image to stay within the box */
         .exhibit-hero {
             width: 100%;
-            height: 300px;
+            height: auto;
+            min-height: 300px;
             background: #1a1a17;
             border: var(--border-style);
             margin-bottom: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
-        .exhibit-hero::after {
-            content: "DEPTH ANALYSIS: ARTIFACT I";
-            color: #2e291b;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+        .exhibit-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         .observation-log {
@@ -141,7 +144,6 @@
         @media (max-width: 600px) {
             .meta-data { grid-template-columns: 1fr; }
             h1 { font-size: 1.6rem; }
-            .exhibit-hero { height: 250px;
         }
     </style>
 </head>
@@ -154,23 +156,25 @@
 </header>
 
 <div class="content-container">
-    <div class="exhibit-hero"><img src="surveyor_plumb.jpg" alt="Macro visual of Exhibit I: The Surveyor’s Plumb"></div>
+    <div class="exhibit-hero">
+        <img src="surveyor_plumb.jpg" alt="Macro visual of Exhibit I: The Surveyor’s Plumb showing etched copper texture">
+    </div>
 
     <article class="observation-log">
         <div class="meta-data">
-            <div class="meta-item"><b>Classification</b> Industrial / Void Measurement</div>
-            <div class="meta-item"><b>Acquisition Date</b> October 31, 1902</div>
-            <div class="meta-item"><b>Containment</b> Lead-lined Box</div>
-            <div class="meta-item"><b>Status</b> Heavy / Stable</div>
+            <div class="meta-item"><b>Classification</b> Non-Euclidean Measurement</div>
+            <div class="meta-item"><b>Origin</b> Jenks/Bixby Allotment (1921)</div>
+            <div class="meta-item"><b>Containment</b> Lead-lined Box / Sealed</div>
+            <div class="meta-item"><b>Status</b> Active / Kinetic</div>
         </div>
 
         <h2>Observer's Notes</h2>
         <div class="narrative-body">
-            A lead weight suspended by a cord made of braided horsehair and copper wire. Originally used to ensure mine shafts were vertical, this plumb was modified by Archive agents to measure the "depth" of localized non-physical voids.
+            A teardrop-shaped weight of high-density lead encased in etched copper. The suspension cord is composed of braided human hair and silver-wrapped silk thread. Recovered from a collapsed cellar near the 1921 flood zones, the object was found suspended in a state of impossible stillness despite heavy local drafts.
 
-            When lowered into an area of high spectral density, the weight does not swing. Instead, it seems to grow heavier, as if sinking into a liquid much denser than air. It is the primary tool for verifying the stability of the Archive's foundation.
+            Analysis indicates the Plumb does not respond to standard gravitational pull. It instead deflects toward localized "unresolved" organic matter. In current testing within the Lénnistree, the weight maintains a constant 45-degree angle toward the primary collection vault, straining against the cord with enough force to cause audible clicking against the interior of its lead-lined containment.
 
-            <i>"To know how high we can build, we must first know how deep the silence goes."</i>
+            <i>"It does not map the soil. It maps the gaps where the soil should be."</i>
         </div>
     </article>
 
