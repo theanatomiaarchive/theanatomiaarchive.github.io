@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exhibit J: The Laryngoscope Lens | The Anatomia Archive</title>
+    <title>Exhibit J: The Parallax Lever | The Anatomia Archive</title>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0d0d0c;
             --parchment: #e2d1a4;
             --accent-red: #ff3333;
+            --field-red: #6e1a1a;
             --text-main: #e0dbcd;
             --sub-text: #b5af9a; 
             --border-style: 1px solid #4a422d;
@@ -30,8 +31,8 @@
         header {
             width: 100%;
             padding: 30px 0;
-            border-bottom: var(--border-style);
-            background: #141412;
+            border-bottom: 2px solid var(--field-red);
+            background: #1a0f0f;
             text-align: center;
         }
 
@@ -55,15 +56,15 @@
         }
 
         .catalog-stamp {
-            color: var(--accent-red);
+            color: #fff;
+            background: var(--field-red);
             font-weight: bold;
             font-size: 1rem;
             letter-spacing: 4px;
-            border: 2px solid var(--accent-red);
             padding: 5px 15px;
             display: inline-block;
             margin-bottom: 20px;
-            transform: rotate(-2deg);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
         }
 
         .content-container {
@@ -72,35 +73,37 @@
             padding: 40px 0;
         }
 
+        /* FIXED IMAGE SCALING */
         .exhibit-hero {
             width: 100%;
-            height: 300px;
-            background: #1a1a17;
+            height: auto; /* Allows the container to grow with the image */
+            min-height: 200px;
+            background: #141412;
             border: var(--border-style);
             margin-bottom: 40px;
+            overflow: hidden;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
 
-        .exhibit-hero::after {
-            content: "INTERNAL OBSERVATION: ARTIFACT J";
-            color: #2e291b;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+        .exhibit-hero img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .observation-log {
             background: #141412;
             border: var(--border-style);
             padding: 40px;
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.8);
         }
 
         .observation-log h2 {
             font-family: 'Playfair Display', serif;
             color: var(--parchment);
-            border-bottom: 1px solid #2e291b;
+            border-bottom: 1px solid var(--field-red);
             padding-bottom: 10px;
             margin-top: 0;
         }
@@ -116,7 +119,7 @@
         }
 
         .meta-item b {
-            color: var(--parchment);
+            color: var(--accent-red);
             display: block;
         }
 
@@ -134,8 +137,15 @@
         .footer-nav a {
             color: var(--parchment);
             text-decoration: none;
-            border: 1px solid var(--parchment);
+            border: 1px solid var(--field-red);
             padding: 10px 20px;
+            background: #1a0f0f;
+            transition: 0.3s;
+        }
+
+        .footer-nav a:hover {
+            background: var(--field-red);
+            color: #fff;
         }
 
         @media (max-width: 600px) {
@@ -148,28 +158,32 @@
 
 <header>
     <a href="index.html" class="nav-back">← Return to Ledger</a>
-    <h1>The Laryngoscope Lens</h1>
-    <div class="catalog-stamp">EXHIBIT J</div>
+    <h1>The Parallax Lever</h1>
+    <div class="catalog-stamp">FIELD LOG: EXHIBIT J</div>
 </header>
 
 <div class="content-container">
-    <div class="exhibit-hero"></div>
+    <div class="exhibit-hero">
+        <img src="parallax_lever.jpg" alt="A heavy blackened steel lever with an offset lateral lens.">
+    </div>
 
     <article class="observation-log">
         <div class="meta-data">
-            <div class="meta-item"><b>Classification</b> Industrial / Bio-Optical</div>
-            <div class="meta-item"><b>Acquisition Date</b> April 14, 1910</div>
-            <div class="meta-item"><b>Containment</b> Sterilized Glass Case</div>
-            <div class="meta-item"><b>Status</b> Functioning / Tremoring</div>
+            <div class="meta-item"><b>Site Location</b> Lenistry (North Wing)</div>
+            <div class="meta-item"><b>Visual Latency</b> 0.4 Seconds</div>
+            <div class="meta-item"><b>Material</b> Pitted Carbon Steel</div>
+            <div class="meta-item"><b>Status</b> Structural Resonance Detected</div>
         </div>
 
-        <h2>Observer's Notes</h2>
+        <h2>Technical Field Notes</h2>
         <div class="narrative-body">
-            A specialized industrial lens originally designed for throat examinations. It has been retrofitted with a series of silvered mirrors that isolate specific frequencies of light.
+            Found during the floorboard restoration of the North Wing. This tool was initially mistaken for a medical instrument, but the industrial weight and carbon-steel composition suggest a much heavier application—likely a specialized survey lever used during the Lenistry’s foundation laying.
 
-            When focused on a subject's throat, the lens reveals the "ghost-vibration" of the vocal cords. Even when the subject is perfectly quiet, the lens shows the cords moving as if reciting a continuous, silent prayer.
+            The lateral lens does not provide a magnification of the current space. Instead, it operates as a temporal shimming device, revealing the structural state of the room with a consistent 0.4-second lag. 
 
-            <i>"The voice never truly rests; it only waits for a listener to find the right frequency."</i>
+            When the lever is braced against load-bearing stone, the lens reveals "geometric slippage"—moments where the past and present hallway do not align. I have seen figures through the glass that simply are not there when I look up. 
+
+            <i>"The building isn't settling. It's vibrating between two different years."</i>
         </div>
     </article>
 
@@ -178,7 +192,7 @@
     </div>
 </div>
 
-<footer style="padding: 40px; text-align: center; font-size: 0.7rem; color: #444;">
+<footer style="padding: 40px; text-align: center; font-size: 0.7rem; color: #444; letter-spacing: 1px;">
     &copy; 1892 - 2026 Masqueraide Workshop & The Anatomia Archive.
 </footer>
 
