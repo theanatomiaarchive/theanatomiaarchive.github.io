@@ -73,23 +73,25 @@
             padding: 40px 0;
         }
 
+        /* FIXED IMAGE CONTAINER */
         .exhibit-hero {
             width: 100%;
-            height: 350px;
+            height: auto;
+            min-height: 350px;
             background: #141412;
             border: 1px solid var(--field-red);
             margin-bottom: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
+            overflow: hidden;
         }
 
-        .exhibit-hero::after {
-            content: "FIELD RECORD: ANOMALY 004";
-            color: #4a1a1a;
-            font-size: 1rem;
-            letter-spacing: 2px;
+        .exhibit-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         .observation-log {
@@ -156,23 +158,25 @@
 </header>
 
 <div class="content-container">
-    <div class="exhibit-hero"></div>
+    <div class="exhibit-hero">
+        <img src="shivering_compass.jpg" alt="Macro visual of the Shivering Compass vibrating in its case">
+    </div>
 
     <article class="observation-log">
         <div class="meta-data">
-            <div class="meta-item"><b>Event Reference</b> The Floorboards Story</div>
+            <div class="meta-item"><b>Origin</b> Sand Springs Silt (Discovered)</div>
             <div class="meta-item"><b>Log Date</b> May 02, 2026</div>
-            <div class="meta-item"><b>Subject</b> Seismic Spectral Resonance</div>
-            <div class="meta-item"><b>Priority</b> High - Saturday Story</div>
+            <div class="meta-item"><b>Subject</b> Tectonic / Organic Pulse</div>
+            <div class="meta-item"><b>Status</b> High Resonance</div>
         </div>
 
         <h2>Field Report</h2>
         <div class="narrative-body">
-            This log details the events following the "Massage Table" incident, moving deeper into the Archive's structural history. The compass does not point toward magnetic north; it reacts to the rhythmic shivering of the floorboards beneath the eastern wing.
+            Recovered from the limestone bluffs near Sand Springs, Item 004 has ceased to function as a navigational tool. It no longer acknowledges magnetic north. Instead, the needle shivers with a frequency that vibrates through the velvet lining of its case and into the bones of the floorboards.
 
-            The vibration is not environmental. It is a supernatural force that exists without explanation. We have found that providing too many details or rationales dilutes the raw nature of the event. 
+            The "Tide" is rising beneath the shop. At 3:00 AM, the city noise fades, leaving only the rhythmic, wet thumping of a heart beating deep beneath the Arkansas River. The Compass isn't just reacting; it’s answering. The inventory is starting to breathe, pulsing in time with the thumping under the floor.
 
-            As we navigate this rich history, we embrace the unknown. Like a lover entering a new relationship, we accept the baggage and the backstories that will never fully make sense, simply because we weren't there to grasp them.
+            We are no longer rescuing history. We are providing a landing site for something that has been looking for a way back to the surface.
             
             <i>"The needle doesn't lead us home; it leads us further into the house."</i>
         </div>
